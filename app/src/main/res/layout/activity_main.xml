@@ -14,12 +14,13 @@
         android:layout_height="wrap_content"
         android:text="Your Profile"
         android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.175" />
+        app:layout_constraintVertical_bias="0.218" />
 
     <Button
         android:id="@+id/button"
@@ -91,4 +92,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.475" />
+
+    <TextView
+        android:id="@+id/verifyMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email Not Verified!"
+        android:textColor="#B02727"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.038" />
+
+    <Button
+        android:id="@+id/resendCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verify Now"
+        android:textColor="#FFFFFF"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/verifyMsg"
+        app:layout_constraintVertical_bias="0.048" />
 </androidx.constraintlayout.widget.ConstraintLayout>
