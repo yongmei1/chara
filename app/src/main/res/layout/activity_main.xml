@@ -11,17 +11,16 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="201dp"
+        android:layout_height="45dp"
         android:text="Your Profile"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintVertical_bias="0.12" />
 
     <Button
         android:id="@+id/button"
@@ -42,8 +41,8 @@
 
     <TextView
         android:id="@+id/profileName"
-        android:layout_width="264dp"
-        android:layout_height="41dp"
+        android:layout_width="364dp"
+        android:layout_height="44dp"
         android:background="#FFFFFF"
         android:text="Your Name"
         android:textSize="24sp"
@@ -56,8 +55,8 @@
 
     <TextView
         android:id="@+id/profileEmail"
-        android:layout_width="264dp"
-        android:layout_height="42dp"
+        android:layout_width="363dp"
+        android:layout_height="48dp"
         android:background="#FFFFFF"
         android:text="Your Email Address"
         android:textSize="24sp"
@@ -70,8 +69,8 @@
 
     <TextView
         android:id="@+id/profilePhone"
-        android:layout_width="266dp"
-        android:layout_height="42dp"
+        android:layout_width="364dp"
+        android:layout_height="44dp"
         android:background="#FFFFFF"
         android:text="Phone Number"
         android:textSize="24sp"
@@ -93,33 +92,35 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.033"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.034" />
 
     <Button
         android:id="@+id/resendCode"
-        android:layout_width="119dp"
-        android:layout_height="32dp"
+        android:layout_width="161dp"
+        android:layout_height="40dp"
         android:text="Verify Now"
         android:textColor="#FFFFFF"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.936"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/verifyMsg"
-        app:layout_constraintVertical_bias="0.047" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.034" />
 
     <ImageView
         android:id="@+id/profileImage"
-        android:layout_width="131dp"
-        android:layout_height="107dp"
+        android:layout_width="179dp"
+        android:layout_height="138dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.245"
+        app:layout_constraintVertical_bias="0.215"
         app:srcCompat="@android:mipmap/sym_def_app_icon" />
 
     <Button
