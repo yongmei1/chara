@@ -13,12 +13,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -90,17 +86,7 @@ public class Register extends AppCompatActivity {
 
                     //send verification link to users email
                     FirebaseUser fuser = fAuth.getCurrentUser();
-                    fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(Register.this,"Verification Email Has Been Sent", Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d(TAG,"onFailure: Email not sent " + e.getMessage() );
-                        }
-                    });
+                    fuser.sendEmailVerification().addOnSuccessListener(aVoid -> Toast.makeText(Register.this,"Verification Email Has Been Sent", Toast.LENGTH_SHORT).show()).addOnFailureListener(e -> Log.d(TAG,"onFailure: Email not sent " + e.getMessage() ));
 
                     Toast.makeText(Register.this, "User created",Toast.LENGTH_SHORT).show();
                     userID = fAuth.getCurrentUser().getUid();
@@ -109,12 +95,7 @@ public class Register extends AppCompatActivity {
                     user.put("fName", fullName);
                     user.put("email", email);
                     user.put("phone", phone);
-                    documentReference.set(user).addOnSuccessListener(aVoid -> Log.d(TAG, "onSuccess: user profile is created for "+ userID)).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d(TAG,"onFailure: "+e.toString());
-                        }
-                    });
+                    documentReference.set(user).addOnSuccessListener(aVoid -> Log.d(TAG, "onSuccess: user profile is created for "+ userID)).addOnFailureListener(e -> Log.d(TAG,"onFailure: "+e.toString()));
 
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 }

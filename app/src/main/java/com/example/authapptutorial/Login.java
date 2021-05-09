@@ -82,12 +82,7 @@ public class Login extends AppCompatActivity {
             passwordResetDialog.setPositiveButton("Yes", (dialog, which) -> {
                 //extract the email and send reset link
                 String mail = resetMail.getText().toString();
-                fAuth.sendPasswordResetEmail(mail).addOnSuccessListener(aVoid -> Toast.makeText(Login.this,"Reset Link Sent To Your Email",Toast.LENGTH_SHORT).show()).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Login.this,"Error! Reset Link Is Not Sent " + e.getMessage(),Toast.LENGTH_SHORT).show();
-                    }
-                });
+                fAuth.sendPasswordResetEmail(mail).addOnSuccessListener(aVoid -> Toast.makeText(Login.this,"Reset Link Sent To Your Email",Toast.LENGTH_SHORT).show()).addOnFailureListener(e -> Toast.makeText(Login.this,"Error! Reset Link Is Not Sent " + e.getMessage(),Toast.LENGTH_SHORT).show());
             });
 
             passwordResetDialog.setNegativeButton("No", (dialog, which) -> {

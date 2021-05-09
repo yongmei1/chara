@@ -139,7 +139,7 @@
         android:id="@+id/changeProfilePic"
         android:layout_width="234dp"
         android:layout_height="47dp"
-        android:text="Change Profile Picture"
+        android:text="Change Profile Details"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.57"

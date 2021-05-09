@@ -2,6 +2,7 @@ package com.example.authapptutorial;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -61,12 +62,7 @@ public class MainActivity extends AppCompatActivity {
         // ^.^ we can now upload images to firebase storage
 
         StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"profile.jpg");
-        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(profileImage);
-            }
-        });
+        profileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(profileImage));
 
 
         userId = fAuth.getCurrentUser().getUid();
@@ -110,16 +106,20 @@ public class MainActivity extends AppCompatActivity {
 
         changeProfileImage.setOnClickListener(v -> {
             //open gallery
-            Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(openGalleryIntent,1000);
+
+            Intent i = new Intent(v.getContext(),EditProfile.class);
+            i.putExtra("fullName", fullName.getText().toString());
+            i.putExtra("email", email.getText().toString());
+            i.putExtra("phone", phone.getText().toString());
+            startActivity(i);
         });
     }
-
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @androidx.annotation.Nullable Intent data){
-        super.onActivityResult(requestCode,resultCode,data); //data is what we got (image) from the gallery
-        if(requestCode == 1000){
-            if(resultCode == Activity.RESULT_OK){
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode,resultCode,data);
+        //  super.onActivityResult(requestCode, resultCode, data); //data is what we got (image) from the gallery
+        if (requestCode == 1000) {
+            if (resultCode == Activity.RESULT_OK) {
                 Uri imageUri = data.getData();
                 //profileImage.setImageURI(imageUri);
 
@@ -128,17 +128,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
     private void uploadImageToFirebase(Uri imageUri) {
         //upload image to firebase storage
         StorageReference fileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"profile.jpg");
         fileRef.putFile(imageUri).addOnSuccessListener(taskSnapshot ->
                 //Toast.makeText(MainActivity.this,"Image Uploaded", Toast.LENGTH_SHORT).show()
-                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Picasso.get().load(uri).into(profileImage);
-                    }
-                })
+                fileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(profileImage))
         ).addOnFailureListener(e -> Toast.makeText(MainActivity.this,"Image Upload Fail", Toast.LENGTH_SHORT).show());
     }
 
