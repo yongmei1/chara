@@ -5,15 +5,32 @@
     android:id="@+id/resetPasswordLocal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3F51B5"
-    tools:context=".MainActivity">
+    android:background="#009688"
+    tools:context=".AccountFragment">
 
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/menu_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:background="#3F51B5"
+        app:itemIconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/menu_navigation"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="201dp"
         android:layout_height="45dp"
-        android:text="Your Profile"
+        android:text="@string/your_profile"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,7 +44,7 @@
         android:layout_width="232dp"
         android:layout_height="64dp"
         android:onClick="logout"
-        android:text="Logout"
+        android:text="@string/logout"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:backgroundTint="#FF9800"
@@ -44,7 +61,7 @@
         android:layout_width="364dp"
         android:layout_height="44dp"
         android:background="#FFFFFF"
-        android:text="Your Name"
+        android:text="@string/your_name"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +75,7 @@
         android:layout_width="363dp"
         android:layout_height="48dp"
         android:background="#FFFFFF"
-        android:text="Your Email Address"
+        android:text="@string/your_email_address"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +89,7 @@
         android:layout_width="364dp"
         android:layout_height="44dp"
         android:background="#FFFFFF"
-        android:text="Phone Number"
+        android:text="@string/phone_number"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +102,7 @@
         android:id="@+id/verifyMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email Not Verified!"
+        android:text="@string/email_not_verified"
         android:textColor="#B02727"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -101,7 +118,7 @@
         android:id="@+id/resendCode"
         android:layout_width="161dp"
         android:layout_height="40dp"
-        android:text="Verify Now"
+        android:text="@string/verify_now"
         android:textColor="#FFFFFF"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -121,30 +138,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.215"
-        app:srcCompat="@android:mipmap/sym_def_app_icon" />
+        app:srcCompat="@android:mipmap/sym_def_app_icon"
+        android:contentDescription="@string/todo" />
 
     <Button
         android:id="@+id/resetPassword"
         android:layout_width="234dp"
         android:layout_height="47dp"
-        android:text="Reset password"
+        android:text="@string/reset_password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.559"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/verifyMsg"
-        app:layout_constraintVertical_bias="0.826" />
+        app:layout_constraintVertical_bias="0.803" />
 
     <Button
         android:id="@+id/changeProfilePic"
         android:layout_width="234dp"
         android:layout_height="47dp"
-        android:text="Change Profile Details"
+        android:text="@string/change_profile_details"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.57"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/verifyMsg"
-        app:layout_constraintVertical_bias="0.91" />
+        app:layout_constraintVertical_bias="0.874" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

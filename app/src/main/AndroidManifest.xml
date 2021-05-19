@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Authapptutorial">
-        <activity android:name=".EditProfile"></activity>
+        <activity android:name=".MainChatbot" />
+        <activity android:name=".Library" />
+        <activity android:name=".List" />
+        <activity android:name=".EditAccount" />
         <activity android:name=".Login" />
         <activity android:name=".Register">
             <intent-filter>
@@ -20,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".AccountFragment">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

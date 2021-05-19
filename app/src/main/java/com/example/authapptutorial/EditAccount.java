@@ -24,7 +24,7 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.Map;
 
- public class EditProfile extends AppCompatActivity {
+ public class EditAccount extends AppCompatActivity  {
 
      public static final String TAG = "TAG";
      EditText profileFullName,profileEmail,profilePhone;
@@ -38,7 +38,7 @@ import java.util.Map;
      @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
+        setContentView(R.layout.activity_edit_account);
 
         Intent data = getIntent();
         String fullName = data.getStringExtra("fullName");
@@ -66,7 +66,7 @@ import java.util.Map;
 
         saveBtn.setOnClickListener(v -> {
             if (profileFullName.getText().toString().isEmpty() || profileEmail.getText().toString().isEmpty() || profilePhone.getText().toString().isEmpty()) {
-                Toast.makeText(EditProfile.this, "One or Many fields are empty.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditAccount.this, "One or Many fields are empty.", Toast.LENGTH_SHORT).show();
                 return;
             }
             final String email1 = profileEmail.getText().toString();
@@ -77,14 +77,14 @@ import java.util.Map;
                 edited.put("fName", profileFullName.getText().toString());
                 edited.put("phone", profilePhone.getText().toString());
 
-                docRef.update(edited).addOnSuccessListener(aVoid1 -> Toast.makeText(EditProfile.this, "Profile Updated", Toast.LENGTH_SHORT).show());
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                Toast.makeText(EditProfile.this, "Email is changed.", Toast.LENGTH_SHORT).show();
+                docRef.update(edited).addOnSuccessListener(aVoid1 -> Toast.makeText(EditAccount.this, "Profile Updated", Toast.LENGTH_SHORT).show());
+                startActivity(new Intent(getApplicationContext(), AccountFragment.class));
+                Toast.makeText(EditAccount.this, "Email is changed.", Toast.LENGTH_SHORT).show();
                 finish();
-            }).addOnFailureListener(e -> Toast.makeText(EditProfile.this, e.getMessage(), Toast.LENGTH_SHORT).show());
+            }).addOnFailureListener(e -> Toast.makeText(EditAccount.this, e.getMessage(), Toast.LENGTH_SHORT).show());
 
 
-            profileImageView.setOnClickListener(View -> Toast.makeText(EditProfile.this, "Profile Image Clicked", Toast.LENGTH_SHORT).show());
+            profileImageView.setOnClickListener(View -> Toast.makeText(EditAccount.this, "Profile Image Clicked", Toast.LENGTH_SHORT).show());
 
             profileEmail.setText(email1);
             profileFullName.setText(fullName);

@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">authapptutorial</string>
+    <string name="chatbot">Chatbot</string>
+    <string name="list">List</string>
+    <string name="account">Account</string>
+    <string name="your_profile">Your Profile</string>
+    <string name="todo">TODO</string>
+    <string name="verify_now">Verify Now</string>
+    <string name="reset_password">Reset password</string>
+    <string name="change_profile_details">Change Profile Details</string>
+    <string name="email_not_verified">Email Not Verified!</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="your_email_address">Your Email Address</string>
+    <string name="your_name">Your Name</string>
+    <string name="logout">Logout</string>
+    <string name="library">Library</string>
+    <string name="library_page">Library Page</string>
 </resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/chatbot"
+        android:title="@string/chatbot"
+        android:icon="@drawable/ic_chatbot"/>
+
+    <item
+        android:id="@+id/list"
+        android:title="@string/list"
+        android:icon="@drawable/ic_home"/>
+
+    <item
+        android:id="@+id/library"
+        android:title="@string/library"
+        android:icon="@drawable/ic_library"/>
+
+    <item
+        android:id="@+id/account"
+        android:title="@string/account"
+        android:icon="@drawable/ic_info"/>
+</menu>
