@@ -28,6 +28,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.util.Objects;
+
 
 public class AccountFragment extends  AppCompatActivity{
     TextView fullName, email,phone, verifySMS;
@@ -42,7 +44,7 @@ public class AccountFragment extends  AppCompatActivity{
 
     @SuppressLint("NonConstantResourceId")
     @Override
-    public void onCreate(  Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
@@ -88,7 +90,7 @@ public class AccountFragment extends  AppCompatActivity{
         storageReference = FirebaseStorage.getInstance().getReference();
         // ^.^ we can now upload images to firebase storage
 
-        StorageReference profileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "profile.jpg");
+        StorageReference profileRef = storageReference.child("users/" + Objects.requireNonNull(fAuth.getCurrentUser()).getUid() + "profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(profileImage));
 
 
@@ -104,6 +106,7 @@ public class AccountFragment extends  AppCompatActivity{
 
         DocumentReference documentReference = fStore.collection("users").document(userId);
         documentReference.addSnapshotListener(this, (documentSnapshot, error) -> {
+            assert documentSnapshot != null;
             fullName.setText(documentSnapshot.getString("fName"));
             email.setText(documentSnapshot.getString("email"));
             phone.setText(documentSnapshot.getString("phone"));
@@ -148,6 +151,7 @@ public class AccountFragment extends  AppCompatActivity{
         //  super.onActivityResult(requestCode, resultCode, data); //data is what we got (image) from the gallery
         if (requestCode == 1000) {
             if (resultCode == Activity.RESULT_OK) {
+                assert data != null;
                 Uri imageUri = data.getData();
                 //profileImage.setImageURI(imageUri);
 
@@ -160,7 +164,7 @@ public class AccountFragment extends  AppCompatActivity{
 
     private void uploadImageToFirebase(Uri imageUri) {
         //upload image to firebase storage
-        StorageReference fileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"profile.jpg");
+        StorageReference fileRef = storageReference.child("users/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid()+"profile.jpg");
         fileRef.putFile(imageUri).addOnSuccessListener(taskSnapshot ->
                 //Toast.makeText(MainActivity.this,"Image Uploaded", Toast.LENGTH_SHORT).show()
                 fileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(profileImage))
@@ -168,8 +172,9 @@ public class AccountFragment extends  AppCompatActivity{
     }
 
     public void logout(View view){
-        FirebaseAuth.getInstance().signOut();  //logout
-        startActivity(new Intent(getApplicationContext(),Login.class));  //send user to login activity class again
+        fAuth.signOut();  //logout
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);  //send user to login activity class again
         finish();
 
     }
