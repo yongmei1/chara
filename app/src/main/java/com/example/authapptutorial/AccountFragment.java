@@ -1,10 +1,8 @@
 package com.example.authapptutorial;
 
-
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.google.firebase.auth.FirebaseAuth;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,9 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -106,6 +102,7 @@ public class AccountFragment extends  AppCompatActivity{
 
         DocumentReference documentReference = fStore.collection("users").document(userId);
         documentReference.addSnapshotListener(this, (documentSnapshot, error) -> {
+
             assert documentSnapshot != null;
             fullName.setText(documentSnapshot.getString("fName"));
             email.setText(documentSnapshot.getString("email"));
@@ -172,10 +169,15 @@ public class AccountFragment extends  AppCompatActivity{
     }
 
     public void logout(View view){
-        fAuth.signOut();  //logout
+       /* FirebaseAuth.getInstance().signOut();  //logout
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);  //send user to login activity class again
+        finish();*/
+
+        FirebaseAuth.getInstance().signOut();  //logout
+        finishAffinity();
         finish();
+        startActivity(new Intent(getApplicationContext(),Login.class));  //send user to login activity class again
 
     }
 
