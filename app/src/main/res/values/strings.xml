@@ -15,4 +15,23 @@
     <string name="logout">Logout</string>
     <string name="library">Library</string>
     <string name="library_page">Library Page</string>
+    <string name="nextmonth">nextmonth</string>
+    <string name="listbutton">listbutton</string>
+    <string name="go_back_to_list">Go back to list</string>
+    <string name="previousmonth">previousmonth</string>
+    <string name="may_2021">May 2021</string>
+    <string name="WED">WED</string>
+    <string name="TUE">TUE</string>
+    <string name="MON">MON</string>
+    <string name="THUR">THUR</string>
+    <string name="FRI">FRI</string>
+    <string name="SAT">SAT</string>
+    <string name="SUN">SUN</string>
+    <string name="textview">TextView</string>
+    <string name="_20th_May_2021">20th May 2021</string>
+    <string name="you_have_12_tasks_to_do_today">You have 12 tasks to do today</string>
+    <string name="imageview">imageview</string>
+    <string name="imageview4cal">imageview4cal</string>
+    <string name="imageview4task">imageview4task</string>
+    <string name="imageview4diagnostics">imageview4diagnostics</string>
 </resources>
