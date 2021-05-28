@@ -27,7 +27,7 @@ import com.squareup.picasso.Picasso;
 import java.util.Objects;
 
 
-public class AccountFragment extends  AppCompatActivity{
+public class Account extends  AppCompatActivity{
     TextView fullName, email,phone, verifySMS;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -120,7 +120,7 @@ public class AccountFragment extends  AppCompatActivity{
             passwordResetDialog.setPositiveButton("Yes", (dialog, which) -> {
                 //extract the email and send reset link
                 String newPassword = resetPassword.getText().toString();
-                user.updatePassword(newPassword).addOnSuccessListener(aVoid -> Toast.makeText(AccountFragment.this, "Password Reset Succesfully", Toast.LENGTH_SHORT).show()).addOnFailureListener(e -> Toast.makeText(AccountFragment.this, "Password reset failed", Toast.LENGTH_SHORT).show());
+                user.updatePassword(newPassword).addOnSuccessListener(aVoid -> Toast.makeText(Account.this, "Password Reset Succesfully", Toast.LENGTH_SHORT).show()).addOnFailureListener(e -> Toast.makeText(Account.this, "Password reset failed", Toast.LENGTH_SHORT).show());
 
             });
 
@@ -165,7 +165,7 @@ public class AccountFragment extends  AppCompatActivity{
         fileRef.putFile(imageUri).addOnSuccessListener(taskSnapshot ->
                 //Toast.makeText(MainActivity.this,"Image Uploaded", Toast.LENGTH_SHORT).show()
                 fileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(profileImage))
-        ).addOnFailureListener(e -> Toast.makeText(AccountFragment.this,"Image Upload Fail", Toast.LENGTH_SHORT).show());
+        ).addOnFailureListener(e -> Toast.makeText(Account.this,"Image Upload Fail", Toast.LENGTH_SHORT).show());
     }
 
     public void logout(View view){

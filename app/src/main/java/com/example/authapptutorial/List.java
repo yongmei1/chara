@@ -3,12 +3,14 @@ package com.example.authapptutorial;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class List extends AppCompatActivity {
+    ImageView calendarBtn;
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -16,6 +18,13 @@ public class List extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+
+        calendarBtn = findViewById(R.id.calendarBtn);
+        calendarBtn.setOnClickListener(v ->{
+
+            Intent i = new Intent(v.getContext(), Calender.class);
+            startActivity(i);
+        });
         //initialise and assign variable
         BottomNavigationView bottomNav = findViewById(R.id.menu_navigation);
         //set chatbot main selected
@@ -25,7 +34,7 @@ public class List extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.account:
-                    startActivity(new Intent(getApplicationContext(), AccountFragment.class));
+                    startActivity(new Intent(getApplicationContext(), Account.class));
                     overridePendingTransition(0,0);
                     return true;
                 case R.id.list:

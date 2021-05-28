@@ -23,6 +23,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
  public class EditAccount extends AppCompatActivity  {
 
@@ -56,7 +57,7 @@ import java.util.Map;
         profileImageView = findViewById(R.id.profileImageView);
         saveBtn = findViewById(R.id.saveProfileInfo);
 
-         StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"profile.jpg");
+         StorageReference profileRef = storageReference.child("users/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid()+"profile.jpg");
          profileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(profileImageView));
 
          profileImageView.setOnClickListener(v -> {
@@ -70,15 +71,15 @@ import java.util.Map;
                 return;
             }
             final String email1 = profileEmail.getText().toString();
-            user.updateEmail(email1).addOnSuccessListener(aVoid -> {
+            user.updateEmail(email).addOnSuccessListener(aVoid -> {
                 DocumentReference docRef = fStore.collection("users").document(user.getUid());
                 Map<String, Object> edited = new HashMap<>();
-                edited.put("email", email1);
+                edited.put("email", email);
                 edited.put("fName", profileFullName.getText().toString());
                 edited.put("phone", profilePhone.getText().toString());
 
                 docRef.update(edited).addOnSuccessListener(aVoid1 -> Toast.makeText(EditAccount.this, "Profile Updated", Toast.LENGTH_SHORT).show());
-                startActivity(new Intent(getApplicationContext(), AccountFragment.class));
+                startActivity(new Intent(getApplicationContext(), Account.class));
                 Toast.makeText(EditAccount.this, "Email is changed.", Toast.LENGTH_SHORT).show();
                 finish();
             }).addOnFailureListener(e -> Toast.makeText(EditAccount.this, e.getMessage(), Toast.LENGTH_SHORT).show());
@@ -100,6 +101,7 @@ import java.util.Map;
          //  super.onActivityResult(requestCode, resultCode, data); //data is what we got (image) from the gallery
          if (requestCode == 1000) {
              if (resultCode == Activity.RESULT_OK) {
+                 assert data != null;
                  Uri imageUri = data.getData();
                  //profileImage.setImageURI(imageUri);
 
@@ -110,7 +112,7 @@ import java.util.Map;
 
      private void uploadImageToFirebase(Uri imageUri) {
          //upload image to firebase storage
-         StorageReference fileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"profile.jpg");
+         StorageReference fileRef = storageReference.child("users/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid()+"profile.jpg");
          fileRef.putFile(imageUri).addOnSuccessListener(taskSnapshot ->
                  //Toast.makeText(MainActivity.this,"Image Uploaded", Toast.LENGTH_SHORT).show()
                  fileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(profileImageView))

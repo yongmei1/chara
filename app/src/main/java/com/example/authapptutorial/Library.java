@@ -26,7 +26,7 @@ public class Library extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.account:
-                    startActivity(new Intent(getApplicationContext(), AccountFragment.class));
+                    startActivity(new Intent(getApplicationContext(), Account.class));
                     overridePendingTransition(0,0);
                     return true;
                 case R.id.list:
