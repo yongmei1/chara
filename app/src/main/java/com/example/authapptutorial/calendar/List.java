@@ -1,13 +1,19 @@
-package com.example.authapptutorial;
+package com.example.authapptutorial.calendar;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.authapptutorial.Account;
+import com.example.authapptutorial.Library;
+import com.example.authapptutorial.Login;
+import com.example.authapptutorial.MainChatbot;
+import com.example.authapptutorial.R;
+import com.example.authapptutorial.calendar.AddTask;
+import com.example.authapptutorial.calendar.Calender;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 

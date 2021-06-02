@@ -14,13 +14,13 @@
         android:theme="@style/Theme.Authapptutorial">
         <activity android:name=".MainChatbot" />
         <activity android:name=".Library" />
-        <activity android:name=".List" />
+        <activity android:name=".calendar.List" />
         <activity android:name=".EditAccount" />
         <activity android:name=".Login" />
         <activity android:name=".Register"/>
-        <activity android:name=".AddTask"/>
+        <activity android:name=".calendar.AddTask"/>
         <activity android:name=".Chara"/>
-        <activity android:name=".Calender">
+        <activity android:name=".calendar.Calender">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

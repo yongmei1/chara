@@ -1,4 +1,4 @@
-package com.example.authapptutorial;
+package com.example.authapptutorial.calendar;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.authapptutorial.Login;
+import com.example.authapptutorial.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.time.LocalDate;

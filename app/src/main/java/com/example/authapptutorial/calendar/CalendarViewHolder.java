@@ -1,10 +1,13 @@
-package com.example.authapptutorial;
+package com.example.authapptutorial.calendar;
 
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.authapptutorial.R;
+import com.example.authapptutorial.calendar.CalendarAdaptor;
 
 public class CalendarViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
