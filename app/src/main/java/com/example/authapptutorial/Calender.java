@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
@@ -24,6 +26,7 @@ public class Calender  extends AppCompatActivity implements CalendarAdaptor.OnIt
     private RecyclerView calendarRecyclerView;
     private LocalDate selectedDate;
     private ImageView backBtn, nextBtn, listBtn;
+
 
     @SuppressLint("WrongViewCast")
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -45,7 +48,14 @@ public class Calender  extends AppCompatActivity implements CalendarAdaptor.OnIt
         listBtn.setOnClickListener(v -> {
                 Intent i = new Intent(v.getContext(), List.class);
                 startActivity(i);
-    });}
+    });
+
+        FirebaseAuth fAuth;
+        fAuth =  FirebaseAuth.getInstance();
+        if(fAuth.getCurrentUser() == null){
+            startActivity(new Intent(getApplication(), Login.class));
+            finish();
+        }}
 
     private void initWidgets()
     {

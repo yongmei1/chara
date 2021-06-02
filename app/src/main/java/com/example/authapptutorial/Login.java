@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Objects;
+
 public class Login extends AppCompatActivity {
 
     EditText mEmail, mPassword;
@@ -64,7 +66,7 @@ public class Login extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), MainChatbot.class));
                 }
                 else{
-                    Toast.makeText(Login.this, "Error!"+ task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Error!"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         });
