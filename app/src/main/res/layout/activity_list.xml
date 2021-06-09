@@ -107,13 +107,14 @@
         app:menu="@menu/menu_navigation"
         tools:ignore="MissingConstraints" />
 
-    <androidx.cardview.widget.CardView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listtodo"
         android:layout_width="409dp"
-        android:layout_height="wrap_content"
+        android:layout_height="457dp"
         app:layout_constraintBottom_toBottomOf="@+id/menu_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.324" />
+        app:layout_constraintVertical_bias="0.788" />
 </androidx.constraintlayout.widget.ConstraintLayout>

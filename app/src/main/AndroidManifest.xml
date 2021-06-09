@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.authapptutorial">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,13 +15,13 @@
         android:theme="@style/Theme.Authapptutorial">
         <activity android:name=".MainChatbot" />
         <activity android:name=".Library" />
-        <activity android:name=".calendar.List" />
+        <activity android:name=".list.List" />
         <activity android:name=".EditAccount" />
         <activity android:name=".Login" />
         <activity android:name=".Register"/>
-        <activity android:name=".calendar.AddTask"/>
+        <activity android:name=".list.AddTask"/>
         <activity android:name=".Chara"/>
-        <activity android:name=".calendar.Calender">
+        <activity android:name="Calender">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.example.authapptutorial.calendar;
+package com.example.authapptutorial;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.authapptutorial.calendar.CalendarAdaptor;
+import com.example.authapptutorial.list.List;
 import com.example.authapptutorial.Login;
 import com.example.authapptutorial.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,10 +25,10 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class Calender  extends AppCompatActivity implements CalendarAdaptor.OnItemListener{
+public class Calender  extends AppCompatActivity implements CalendarAdaptor.OnItemListener {
+    private static LocalDate selectedDate;
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
-    private LocalDate selectedDate;
     private ImageView backBtn, nextBtn, listBtn;
 
 
@@ -78,7 +80,7 @@ public class Calender  extends AppCompatActivity implements CalendarAdaptor.OnIt
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private ArrayList<String> daysInMonthArray(LocalDate date)
+    public static ArrayList<String> daysInMonthArray(LocalDate date)
     {
         ArrayList<String> daysInMonthArray = new ArrayList<>();
         YearMonth yearMonth = YearMonth.from(date);
@@ -103,7 +105,7 @@ public class Calender  extends AppCompatActivity implements CalendarAdaptor.OnIt
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private String monthYearFromDate(LocalDate date)
+    public static String monthYearFromDate(LocalDate date)
     {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
         return date.format(formatter);
@@ -133,5 +135,9 @@ public class Calender  extends AppCompatActivity implements CalendarAdaptor.OnIt
             String message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate);
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void weeklyAction(View view){
+        //startActivity(new Intent(this, WeekViewActivity.class));
     }
 }

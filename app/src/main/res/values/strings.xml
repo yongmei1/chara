@@ -34,4 +34,7 @@
     <string name="imageview4cal">imageview4cal</string>
     <string name="imageview4task">imageview4task</string>
     <string name="imageview4diagnostics">imageview4diagnostics</string>
+    <string name="new_event">New Event</string>
+    <string name="previousweek" />
+    <string name="nextweek" />
 </resources>
