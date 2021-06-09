@@ -103,24 +103,7 @@ public class AddTask extends AppCompatActivity {
             user2.put("details", taskDetails);
             documentReference.set(task).addOnSuccessListener(aVoid -> Log.d(TAG, "onSuccess: task added successfully for user: " + userID)).addOnFailureListener(e -> Log.d(TAG, "onFailure: " + e.toString()));
 
-            //documentReference.collection("tasks").get();
-            String currentUser = fAuth.getCurrentUser().getUid();
-            Log.d(TAG, "current user: "+currentUser);
-            fStore.collection("tasks")
-                    .whereEqualTo("userid", currentUser)
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Log.d(TAG, document.getId() + " => " + document.getData());
-                                }
-                            } else {
-                                Log.d(TAG, "Error getting documents: ", task.getException());
-                            }
-                        }
-                    });
+
         });
     }
 }

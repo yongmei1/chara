@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.authapptutorial.calendar.CalendarAdaptor;
+import com.example.authapptutorial.list.AddTask;
 import com.example.authapptutorial.list.List;
 import com.example.authapptutorial.Login;
 import com.example.authapptutorial.R;
@@ -90,7 +91,7 @@ public class Calender  extends AppCompatActivity implements CalendarAdaptor.OnIt
         LocalDate firstOfMonth = selectedDate.withDayOfMonth(1);
         int dayOfWeek = firstOfMonth.getDayOfWeek().getValue();
 
-        for(int i = 1; i <= 42; i++)
+        for(int i = 0; i <= 40; i++)
         {
             if(i <= dayOfWeek || i > daysInMonth + dayOfWeek)
             {
@@ -134,10 +135,8 @@ public class Calender  extends AppCompatActivity implements CalendarAdaptor.OnIt
         {
             String message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate);
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            startActivity(new Intent(getApplicationContext(), ListTasks.class));
         }
     }
 
-    public void weeklyAction(View view){
-        //startActivity(new Intent(this, WeekViewActivity.class));
-    }
 }

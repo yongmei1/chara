@@ -4,9 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.authapptutorial.Account;
 import com.example.authapptutorial.Library;
 import com.example.authapptutorial.Login;
@@ -17,7 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class List extends AppCompatActivity {
-    ImageView calendarBtn, addBtn;
+    ImageView calendarBtn, addBtn, taskDiagnostics;
 
     @SuppressLint({"NonConstantResourceId", "WrongViewCast"})
     @Override
