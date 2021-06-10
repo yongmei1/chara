@@ -29,7 +29,7 @@ import java.util.Objects;
 
      public static final String TAG = "TAG";
      EditText profileFullName,profileEmail,profilePhone;
-     ImageView profileImageView;
+     ImageView profileImageView, cancelBtn;
      Button saveBtn;
      FirebaseAuth fAuth;
      FirebaseFirestore fStore;
@@ -56,6 +56,7 @@ import java.util.Objects;
         profilePhone = findViewById(R.id.profilePhoneNo);
         profileImageView = findViewById(R.id.profileImageView);
         saveBtn = findViewById(R.id.saveProfileInfo);
+        cancelBtn = findViewById(R.id.cancelBtn);
 
          StorageReference profileRef = storageReference.child("users/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid()+"profile.jpg");
          profileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(profileImageView));
@@ -65,11 +66,18 @@ import java.util.Objects;
              startActivityForResult(openGalleryIntent,1000);
          });
 
+         cancelBtn.setOnClickListener(v -> {
+             Intent i = new Intent(v.getContext(), Account.class);
+             startActivity(i);
+         });
+
         saveBtn.setOnClickListener(v -> {
             if (profileFullName.getText().toString().isEmpty() || profileEmail.getText().toString().isEmpty() || profilePhone.getText().toString().isEmpty()) {
                 Toast.makeText(EditAccount.this, "One or Many fields are empty.", Toast.LENGTH_SHORT).show();
                 return;
             }
+
+
             final String email1 = profileEmail.getText().toString();
             user.updateEmail(email).addOnSuccessListener(aVoid -> {
                 DocumentReference docRef = fStore.collection("users").document(user.getUid());

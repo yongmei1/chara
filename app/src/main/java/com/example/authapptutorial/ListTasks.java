@@ -3,9 +3,12 @@ package com.example.authapptutorial;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +31,6 @@ public class ListTasks extends AppCompatActivity {
     ListView listView;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    ArrayList<String> storeTasks = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,23 +43,7 @@ public class ListTasks extends AppCompatActivity {
         taskDiagnostics = findViewById(R.id.taskDiagnostics);
         deleteBtn = findViewById(R.id.deleteTaskBtn);
         cancelBtn = findViewById(R.id.cancelBtn);
-
         ArrayList<String> storeTasks = new ArrayList<>();
-
-        ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("test one");
-        arrayList.add("test 2");
-        arrayList.add("test 3");
-        arrayList.add("test 4");
-        arrayList.add("test 5");
-        arrayList.add("test 6");
-        arrayList.add("test one1");
-        arrayList.add("test 21");
-        arrayList.add("test 31");
-        arrayList.add("test 41");
-        arrayList.add("test 51");
-        arrayList.add("test 61");
-
 
         String currentUser = fAuth.getCurrentUser().getUid();
         Log.d(TAG, "current user: "+currentUser);
@@ -71,24 +57,24 @@ public class ListTasks extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
                                  storeTasks.add(document.getId());
-
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
-
-
-                        for(int i=0;i<storeTasks.size();i++){
+                       /* for(int i=0;i<storeTasks.size();i++){
                             System.out.println("STORETASKS  ----------------"+storeTasks.get(i));
-                        }
+                        }*/
 
                         ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeTasks);
                         listView.setAdapter(arrayAdapter);
+                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                Toast.makeText(ListTasks.this,"clicked item:" + position+ " "+storeTasks.get(position),Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
-
                 });
-
-
 
         cancelBtn.setOnClickListener(v ->{
             Intent i = new Intent(v.getContext(), Calender.class);
@@ -106,7 +92,6 @@ public class ListTasks extends AppCompatActivity {
             startActivity(new Intent(getApplication(), Login.class));
             finish();
         }
-
     }
-
 }
+

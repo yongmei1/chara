@@ -91,7 +91,7 @@ public class Calender  extends AppCompatActivity implements CalendarAdaptor.OnIt
         LocalDate firstOfMonth = selectedDate.withDayOfMonth(1);
         int dayOfWeek = firstOfMonth.getDayOfWeek().getValue();
 
-        for(int i = 0; i <= 40; i++)
+        for(int i = 2; i <= 42; i++)
         {
             if(i <= dayOfWeek || i > daysInMonth + dayOfWeek)
             {
