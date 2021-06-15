@@ -1,4 +1,4 @@
-package com.example.authapptutorial.list;
+package com.example.authapptutorial;
 
 import java.util.ArrayList;
 

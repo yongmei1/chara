@@ -11,8 +11,8 @@ import com.example.authapptutorial.R;
 import java.util.ArrayList;
 
 public class CalendarAdaptor extends RecyclerView.Adapter<CalendarViewHolder> {
-    private final ArrayList<String> daysOfMonth;
-    private final OnItemListener onItemListener;
+    public final ArrayList<String> daysOfMonth;
+    public final OnItemListener onItemListener;
 
     public CalendarAdaptor(ArrayList<String> daysOfMonth, OnItemListener onItemListener)
     {

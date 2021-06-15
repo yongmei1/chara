@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.049" />
 
     <TextView
-        android:id="@+id/noOfTasks"
+        android:id="@+id/numTasks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/you_have_12_tasks_to_do_today"

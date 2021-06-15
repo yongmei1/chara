@@ -12,7 +12,7 @@ import com.example.authapptutorial.calendar.CalendarAdaptor;
 public class CalendarViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     public final TextView dayOfMonth;
-    private final CalendarAdaptor.OnItemListener onItemListener;
+    public final CalendarAdaptor.OnItemListener onItemListener;
 
     public CalendarViewHolder(@NonNull View itemView, CalendarAdaptor.OnItemListener onItemListener) {
         super(itemView);

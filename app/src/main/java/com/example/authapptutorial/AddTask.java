@@ -1,10 +1,9 @@
-package com.example.authapptutorial.list;
+package com.example.authapptutorial;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.ArrayMap;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,29 +11,18 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.authapptutorial.Calender;
-import com.example.authapptutorial.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import com.example.authapptutorial.list.List;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 import static android.content.ContentValues.TAG;
@@ -88,8 +76,10 @@ public class AddTask extends AppCompatActivity {
             String taskDetails = details.getText().toString().trim();
             String date = datePickerBtn.getText().toString();
 
-            Intent i = new Intent(v.getContext(), List.class);
-            startActivity(i);
+
+          //  Intent i = new Intent(v.getContext(), List.class);
+          //  startActivity(i);
+            startActivity(new Intent(getApplicationContext(), List.class));
             Toast.makeText(this,"Task successfully added", Toast.LENGTH_LONG).show();
             userID = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
             documentReference = fStore.collection("tasks").document(taskTitle);
@@ -115,11 +105,13 @@ public class AddTask extends AppCompatActivity {
             user2.put("date",date);
             documentReference.set(task).addOnSuccessListener(aVoid -> Log.d(TAG, "onSuccess: task added successfully for user: " + userID)).addOnFailureListener(e -> Log.d(TAG, "onFailure: " + e.toString()));
 
+            //date from this class
+            System.out.println("TODAYS DATE/USERS PICKED DATE CHOISE ON CALENDER -----" + date);
 
         });
     }
 
-    private String getTodaysDate() {
+    public String getTodaysDate() {
         Calendar calender = Calendar.getInstance();
         int year = calender.get(Calendar.YEAR);
         int month = calender.get(Calendar.MONTH);
@@ -148,25 +140,25 @@ public class AddTask extends AppCompatActivity {
     }
 
     private String makeDateString(int dayOfMonth, int month, int year) {
-        return getMonthFormat(month) + " " + dayOfMonth + " " + year;
+        return dayOfMonth+ " " + getMonthFormat(month) + " " + year;
     }
 
     private String getMonthFormat(int month) {
 
-        if(month ==1 ) return "JAN";
-        if(month ==2) return "FEB";
-        if(month ==3) return "MAR";
-        if(month ==4) return "APR";
-        if(month ==5) return "MAY";
-        if(month ==6) return "JUN";
-        if(month ==7) return "JUL";
-        if(month ==8) return "AUG";
-        if(month ==9) return "SEP";
-        if(month ==10) return "OCT";
-        if(month ==11) return "NOV";
-        if(month ==12) return "DEC";
+        if(month ==1 ) return "January";
+        if(month ==2) return "February";
+        if(month ==3) return "March";
+        if(month ==4) return "April";
+        if(month ==5) return "May";
+        if(month ==6) return "June";
+        if(month ==7) return "July";
+        if(month ==8) return "August";
+        if(month ==9) return "September";
+        if(month ==10) return "October";
+        if(month ==11) return "November";
+        if(month ==12) return "December";
         //default jan should never happen
-        return "JAN";
+        return "January";
     }
 
     public void openDatePicker(View view) {

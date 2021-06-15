@@ -7,6 +7,25 @@
     android:background="#2196F3">
 
 
+    <RelativeLayout
+        android:id="@+id/tasksLayout"
+        android:layout_width="414dp"
+        android:layout_height="450dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.927">
+
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
     <ImageButton
         android:id="@+id/deleteTaskBtn"
         android:layout_width="58dp"
@@ -64,7 +83,7 @@
         app:layout_constraintVertical_bias="0.056" />
 
     <TextView
-        android:id="@+id/NoOfTasks"
+        android:id="@+id/numTasks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/you_have_12_tasks_to_do_today"

@@ -19,10 +19,10 @@
         <activity android:name=".EditAccount" />
         <activity android:name=".Login" />
         <activity android:name=".Register"/>
-        <activity android:name=".list.AddTask"/>
-        <activity android:name=".ListTasks"/>
+        <activity android:name=".AddTask"/>
+        <activity android:name=".list.ListTasks"/>
         <activity android:name=".Chara"/>
-        <activity android:name="Calender">
+        <activity android:name=".calendar.Calender">
 
 
             <intent-filter>

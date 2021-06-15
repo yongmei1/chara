@@ -1,4 +1,4 @@
-package com.example.authapptutorial;
+package com.example.authapptutorial.calendar;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -14,9 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.authapptutorial.calendar.CalendarAdaptor;
-import com.example.authapptutorial.list.AddTask;
 import com.example.authapptutorial.list.List;
+import com.example.authapptutorial.list.ListTasks;
 import com.example.authapptutorial.Login;
 import com.example.authapptutorial.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,10 +26,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Calender  extends AppCompatActivity implements CalendarAdaptor.OnItemListener {
-    private static LocalDate selectedDate;
-    private TextView monthYearText;
-    private RecyclerView calendarRecyclerView;
+    public static LocalDate selectedDate;
+    public TextView monthYearText;
+    public RecyclerView calendarRecyclerView;
     private ImageView backBtn, nextBtn, listBtn;
+
+    public  static String message,s;
 
 
     @SuppressLint("WrongViewCast")
@@ -38,6 +39,7 @@ public class Calender  extends AppCompatActivity implements CalendarAdaptor.OnIt
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cal);
         initWidgets();
@@ -62,14 +64,14 @@ public class Calender  extends AppCompatActivity implements CalendarAdaptor.OnIt
             finish();
         }}
 
-    private void initWidgets()
+    public void initWidgets()
     {
         calendarRecyclerView = findViewById(R.id.calendarRecyclerView);
         monthYearText = findViewById(R.id.month);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private void setMonthView()
+    public void setMonthView()
     {
         monthYearText.setText(monthYearFromDate(selectedDate));
         ArrayList<String> daysInMonth = daysInMonthArray(selectedDate);
@@ -133,10 +135,19 @@ public class Calender  extends AppCompatActivity implements CalendarAdaptor.OnIt
     {
         if(!dayText.equals(""))
         {
-            String message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate);
+            message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate);
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            s = dayText +" "+ monthYearFromDate(selectedDate);
+
+            // this works get rid of adfa shit ...
+            System.out.println( "adfa "+ s);
+            getDate(s);
             startActivity(new Intent(getApplicationContext(), ListTasks.class));
         }
     }
 
+    public String date;
+    public void getDate(String date){
+        System.out.println("date   "+date);
+    }
 }
