@@ -68,8 +68,8 @@ public class List extends AppCompatActivity {
         todays_date = findViewById(R.id.todays_date);
         todays_date.setText(part3+" "+Calender.monthYearFromDate(date));
 
-        numTasks = findViewById(R.id.numTasks);
-        numTasks.setText("You have "+size+ " tasks due today");
+       // numTasks = findViewById(R.id.numTasks);
+   //     numTasks.setText("You have "+size+ " tasks due today");
 
 
         String currentUser = fAuth.getCurrentUser().getUid();

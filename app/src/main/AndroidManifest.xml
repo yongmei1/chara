@@ -22,6 +22,7 @@
         <activity android:name=".AddTask"/>
         <activity android:name=".list.ListTasks"/>
         <activity android:name=".Chara"/>
+        <activity android:name=".ViewTaskDetails"/>
         <activity android:name=".calendar.Calender">
 
 
