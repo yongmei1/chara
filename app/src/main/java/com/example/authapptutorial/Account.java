@@ -105,7 +105,7 @@ public class Account extends  AppCompatActivity{
         DocumentReference documentReference = fStore.collection("users").document(userId);
         documentReference.addSnapshotListener(this, (documentSnapshot, error) -> {
 
-          //  assert documentSnapshot != null;
+            assert documentSnapshot != null;    //remove this line to get error when you logout so idk rlly ?
             fullName.setText(documentSnapshot.getString("fName"));
             email.setText(documentSnapshot.getString("email"));
             phone.setText(documentSnapshot.getString("phone"));

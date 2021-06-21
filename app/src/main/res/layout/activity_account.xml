@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.12" />
+        app:layout_constraintVertical_bias="0.093" />
 
     <Button
         android:id="@+id/button"
@@ -60,8 +60,9 @@
         android:id="@+id/profileName"
         android:layout_width="364dp"
         android:layout_height="44dp"
-        android:background="#FFFFFF"
+        android:background="#009688"
         android:text="@string/your_name"
+        android:textAllCaps="false"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +75,7 @@
         android:id="@+id/profileEmail"
         android:layout_width="363dp"
         android:layout_height="48dp"
-        android:background="#FFFFFF"
+        android:background="#009688"
         android:text="@string/your_email_address"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -88,7 +89,7 @@
         android:id="@+id/profilePhone"
         android:layout_width="364dp"
         android:layout_height="44dp"
-        android:background="#FFFFFF"
+        android:background="#009688"
         android:text="@string/phone_number"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"

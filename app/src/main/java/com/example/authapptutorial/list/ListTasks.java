@@ -36,7 +36,7 @@ public class ListTasks extends AppCompatActivity {
     public TextView todays_date, numTasks;
     public static String size;
     public static String itemValue;
-    public Object details;
+    public static String details;
     public static int itemPosition;
 
 
@@ -55,6 +55,7 @@ public class ListTasks extends AppCompatActivity {
         deleteBtn = findViewById(R.id.deleteTaskBtn);
         cancelBtn = findViewById(R.id.cancelBtn);
         ArrayList<String> storeTasks = new ArrayList<>();
+        ArrayList<String> storeDetails = new ArrayList<>();
 
         Calender c = new Calender();
         c.getDate(Calender.s);
@@ -75,15 +76,18 @@ public class ListTasks extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             Log.d(TAG, document.getId() + " => " + document.getData());
-                             System.out.println("deets "+ document.get("taskDetails"));
-                              details = Objects.requireNonNull(document.get("taskDetails")).toString();
-                            storeTasks.add(document.getId());
-                            temp.add(document.getId());
+                             details = document.get("taskDetails").toString();
+                             storeDetails.add(document.get("taskDetails").toString());
+                             storeTasks.add(document.getId());
+                             temp.add(document.getId());
+
+                           // System.out.println("ta "+ document.getId());
+                           // System.out.println("da "+ document.get("taskDetails").toString());
 
                         }
 
                         int t = temp.size();
-                        System.out.println("tttttttt " + t);
+                       // System.out.println("tttttttt " + t);
                         size = Integer.toString(t);
 
                     } else {
