@@ -48,7 +48,7 @@ public class ListTasks extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listview);
         addBtn = findViewById(R.id.addTaskBtn);
         taskDiagnostics = findViewById(R.id.taskDiagnostics);
-        deleteBtn = findViewById(R.id.deleteTaskBtn);
+      //  deleteBtn = findViewById(R.id.deleteTaskBtn);
         cancelBtn = findViewById(R.id.cancelBtn);
         ArrayList<String> storeTasks = new ArrayList<>();
         ArrayList<String> storeDetails = new ArrayList<>();
