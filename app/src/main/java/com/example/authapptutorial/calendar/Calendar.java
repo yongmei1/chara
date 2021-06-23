@@ -14,10 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.authapptutorial.list.List;
-import com.example.authapptutorial.list.ListTasks;
+import com.example.authapptutorial.main_navigation.List;
 import com.example.authapptutorial.Login;
 import com.example.authapptutorial.R;
+import com.example.authapptutorial.list.ListTasks;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.time.LocalDate;
@@ -25,7 +25,7 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class Calender  extends AppCompatActivity implements CalendarAdaptor.OnItemListener {
+public class Calendar extends AppCompatActivity implements CalendarAdaptor.OnItemListener {
     public static LocalDate selectedDate;
     public TextView monthYearText;
     public RecyclerView calendarRecyclerView;
@@ -34,7 +34,7 @@ public class Calender  extends AppCompatActivity implements CalendarAdaptor.OnIt
     public  static String message,s;
 
 
-    @SuppressLint("WrongViewCast")
+    @SuppressLint({"WrongViewCast", "NonConstantResourceId"})
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -56,6 +56,7 @@ public class Calender  extends AppCompatActivity implements CalendarAdaptor.OnIt
                 Intent i = new Intent(v.getContext(), List.class);
                 startActivity(i);
     });
+
 
         FirebaseAuth fAuth;
         fAuth =  FirebaseAuth.getInstance();

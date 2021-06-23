@@ -1,4 +1,4 @@
-package com.example.authapptutorial;
+package com.example.authapptutorial.list;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -7,18 +7,24 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.authapptutorial.list.List;
+import com.example.authapptutorial.main_navigation.List;
+import com.example.authapptutorial.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.Source;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -32,18 +38,18 @@ public class AddTask extends AppCompatActivity {
 
     taskModel task;
     EditText title, details;
-    Button work, personal,other,cancel,save;
+    Button cancel,save;
+    CheckBox work, personal,other;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    FirebaseUser user;
     String userID;
-    DocumentReference documentReference;
-
+    public String taskType;
+    CollectionReference documentReference;
     private Button datePickerBtn;
     private DatePickerDialog datePickerDialog;
 
 
-    @SuppressLint("NonConstantResourceId")
+    @SuppressLint({"NonConstantResourceId", "ClickableViewAccessibility"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +61,9 @@ public class AddTask extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
-        work = findViewById(R.id.workbutton);
-        personal = findViewById(R.id.personalbutton);
-        other = findViewById(R.id.otherbutton);
+        work = findViewById(R.id.work);
+        personal = findViewById(R.id.personal);
+        other = findViewById(R.id.other);
         datePickerBtn = findViewById(R.id.datePicker);
         datePickerBtn.setText(getTodaysDate());
 
@@ -67,7 +73,51 @@ public class AddTask extends AppCompatActivity {
             startActivity(i);
         });
 
-        AlertDialog dialog;
+
+
+        work.setOnClickListener(v -> {
+            if (work.isChecked()){
+                taskType="work";
+                if(work.isChecked()&&personal.isChecked()){
+                    Toast.makeText(AddTask.this, "Please choose one option only",Toast.LENGTH_SHORT).show();
+                }
+                if(work.isChecked()&&other.isChecked()){
+                    Toast.makeText(AddTask.this, "Please choose one option only",Toast.LENGTH_SHORT).show();
+                }
+                if(other.isChecked()&&personal.isChecked()){
+                    Toast.makeText(AddTask.this, "Please choose one option only",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        personal.setOnClickListener(v -> {
+            if (personal.isChecked()){
+                taskType="personal";
+                if(work.isChecked()&&personal.isChecked()){
+                    Toast.makeText(AddTask.this, "Please choose one option only",Toast.LENGTH_SHORT).show();
+                }
+                if(work.isChecked()&&other.isChecked()){
+                    Toast.makeText(AddTask.this, "Please choose one option only",Toast.LENGTH_SHORT).show();
+                }
+                if(other.isChecked()&&personal.isChecked()){
+                    Toast.makeText(AddTask.this, "Please choose one option only",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        other.setOnClickListener(v -> {
+            if (other.isChecked()){
+                taskType="other";
+                if(work.isChecked()&&personal.isChecked()){
+                    Toast.makeText(AddTask.this, "Please choose one option only",Toast.LENGTH_SHORT).show();
+                }
+                if(work.isChecked()&&other.isChecked()){
+                    Toast.makeText(AddTask.this, "Please choose one option only",Toast.LENGTH_SHORT).show();
+                }
+                if(other.isChecked()&&personal.isChecked()){
+                    Toast.makeText(AddTask.this, "Please choose one option only",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
 
 
         save = findViewById(R.id.savebutton);
@@ -76,37 +126,22 @@ public class AddTask extends AppCompatActivity {
             String taskDetails = details.getText().toString().trim();
             String date = datePickerBtn.getText().toString();
 
-
-          //  Intent i = new Intent(v.getContext(), List.class);
-          //  startActivity(i);
             startActivity(new Intent(getApplicationContext(), List.class));
             Toast.makeText(this,"Task successfully added", Toast.LENGTH_LONG).show();
             userID = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
-            documentReference = fStore.collection("tasks").document(taskTitle);
-
-            //DocumentReference documentReference = fStore.collection("tasks").document(userID);
-            //Map<String,Object> user = new HashMap<>();/
-            //user.put("title", taskTitle);
-            //user.put("detail", taskDetails);
-            //documentReference.set(user).addOnSuccessListener(aVoid -> Log.d(TAG, "onSuccess: task added successfully for user: "+ userID)).addOnFailureListener(e -> Log.d(TAG,"onFailure: "+e.toString()));
-
-            task = new taskModel(taskDetails,taskTitle, userID, date);
+         //   documentReference = fStore.collection("tasks").document(taskTitle);
+            documentReference = fStore.collection("tasks");
+            task = new taskModel(taskDetails,taskTitle, userID, date, taskType);
             ArrayList<Object> list = new ArrayList<>();
             list.add(task);
 
-          //  HashMap<String, Object> user = new HashMap<>();
-          //  user.put("title", taskTitle);
-          //  user.put("details",taskDetails);
-
             HashMap<String, String> user2 = new HashMap<>();
-            //user2.put("list", list);
-            user2.put("title", taskTitle);
-            user2.put("details", taskDetails);
+            user2.put("taskName", taskTitle);
+            user2.put("taskDetails", taskDetails);
             user2.put("date",date);
-            documentReference.set(task).addOnSuccessListener(aVoid -> Log.d(TAG, "onSuccess: task added successfully for user: " + userID)).addOnFailureListener(e -> Log.d(TAG, "onFailure: " + e.toString()));
-
-            //date from this class
-            System.out.println("TODAYS DATE/USERS PICKED DATE CHOISE ON CALENDER -----" + date);
+            user2.put("taskType",taskType);
+            user2.put("userid",userID);
+            documentReference.add(task).addOnSuccessListener(aVoid -> Log.d(TAG, "onSuccess: task added successfully for user: " + userID)).addOnFailureListener(e -> Log.d(TAG, "onFailure: " + e.toString()));
 
         });
     }
@@ -122,14 +157,11 @@ public class AddTask extends AppCompatActivity {
     }
 
     private void initDatePicker() {
-        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month+1;
-                String date = makeDateString(dayOfMonth, month, year);
-                datePickerBtn.setText(date);
+        DatePickerDialog.OnDateSetListener dateSetListener = (view, year, month, dayOfMonth) -> {
+            month = month+1;
+            String date = makeDateString(dayOfMonth, month, year);
+            datePickerBtn.setText(date);
 
-            }
         };
         Calendar calender = Calendar.getInstance();
         int year = calender.get(Calendar.YEAR);
@@ -144,7 +176,6 @@ public class AddTask extends AppCompatActivity {
     }
 
     private String getMonthFormat(int month) {
-
         if(month ==1 ) return "January";
         if(month ==2) return "February";
         if(month ==3) return "March";
@@ -164,6 +195,5 @@ public class AddTask extends AppCompatActivity {
     public void openDatePicker(View view) {
         datePickerDialog.show();
     }
-
 
 }

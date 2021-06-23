@@ -1,18 +1,19 @@
-package com.example.authapptutorial;
+package com.example.authapptutorial.list;
 
-import java.util.ArrayList;
 
 public class taskModel {
     public String taskDetails;
     public String taskName;
     public String userid;
     public String date;
+    public String taskType;
 
-    public taskModel(String taskDetails, String taskName, String userid, String date){
+    public taskModel(String taskDetails, String taskName, String userid, String date, String taskType){
         this.taskDetails = taskDetails;
         this.taskName = taskName;
         this.userid = userid;
         this.date = date;
+        this.taskType = taskType;
 
     }
     public taskModel(){}
@@ -29,6 +30,9 @@ public class taskModel {
     public String getDate(){
         return date;
     }
+    public String getTaskType(){
+        return taskType;
+    }
 
     public void setTaskDetails(String taskDet){
         this.taskDetails = taskDet;
@@ -43,7 +47,11 @@ public class taskModel {
         this.date = date;
     }
 
+    public void setTaskType(String taskType){
+        this.taskType = taskType;
+    }
+
     public String toString(){
-        return "taskModel string output: "+taskName+" "+taskDetails+" "+userid+" "+date;
+        return "taskModel string output: "+taskName+" "+taskDetails+" "+userid+" "+date+" "+taskType;
     }
 }

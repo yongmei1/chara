@@ -37,4 +37,5 @@
     <string name="new_event">New Event</string>
     <string name="previousweek" />
     <string name="nextweek" />
+    <string name="calendar">Calendar</string>
 </resources>

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#009688"
-    tools:context=".Account">
+    tools:context=".main_navigation.Account">
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -54,7 +54,7 @@
         app:layout_constraintHorizontal_bias="0.564"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.734" />
+        app:layout_constraintVertical_bias="0.898" />
 
     <TextView
         android:id="@+id/profileName"
@@ -63,7 +63,7 @@
         android:background="#009688"
         android:text="@string/your_name"
         android:textAllCaps="false"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.578"
@@ -77,13 +77,13 @@
         android:layout_height="48dp"
         android:background="#009688"
         android:text="@string/your_email_address"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.578"
+        app:layout_constraintHorizontal_bias="0.583"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.48" />
 
     <TextView
         android:id="@+id/profilePhone"
@@ -91,7 +91,7 @@
         android:layout_height="44dp"
         android:background="#009688"
         android:text="@string/phone_number"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.586"
@@ -144,27 +144,27 @@
 
     <Button
         android:id="@+id/resetPassword"
-        android:layout_width="234dp"
+        android:layout_width="184dp"
         android:layout_height="47dp"
         android:text="@string/reset_password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.559"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/verifyMsg"
-        app:layout_constraintVertical_bias="0.803" />
+        app:layout_constraintVertical_bias="0.795" />
 
     <Button
         android:id="@+id/changeProfilePic"
-        android:layout_width="234dp"
-        android:layout_height="47dp"
-        android:text="@string/change_profile_details"
+        android:layout_width="159dp"
+        android:layout_height="45dp"
+        android:text="Edit Profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.57"
+        app:layout_constraintHorizontal_bias="0.928"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/verifyMsg"
-        app:layout_constraintVertical_bias="0.874" />
+        app:layout_constraintVertical_bias="0.796" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

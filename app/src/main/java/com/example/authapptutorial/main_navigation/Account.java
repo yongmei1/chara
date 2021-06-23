@@ -1,9 +1,11 @@
-package com.example.authapptutorial;
+package com.example.authapptutorial.main_navigation;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.authapptutorial.list.List;
+import com.example.authapptutorial.EditAccount;
+import com.example.authapptutorial.Login;
+import com.example.authapptutorial.R;
 import com.google.firebase.auth.FirebaseAuth;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -179,7 +181,7 @@ public class Account extends  AppCompatActivity{
         FirebaseAuth.getInstance().signOut();  //logout
         finishAffinity();
         finish();
-        startActivity(new Intent(getApplicationContext(),Login.class));  //send user to login activity class again
+        startActivity(new Intent(getApplicationContext(), Login.class));  //send user to login activity class again
 
     }
 

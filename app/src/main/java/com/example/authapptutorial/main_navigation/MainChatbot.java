@@ -1,27 +1,28 @@
-package com.example.authapptutorial;
+package com.example.authapptutorial.main_navigation;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.authapptutorial.list.List;
+import com.example.authapptutorial.R;
+import com.example.authapptutorial.main_navigation.Account;
+import com.example.authapptutorial.main_navigation.Library;
+import com.example.authapptutorial.main_navigation.List;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Library extends AppCompatActivity {
-
+public class MainChatbot extends AppCompatActivity  {
 
     @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.library);
+        setContentView(R.layout.main_chatbot);
 
         //initialise and assign variable
         BottomNavigationView bottomNav = findViewById(R.id.menu_navigation);
         //set chatbot main selected
-        bottomNav.setSelectedItemId(R.id.library);
+        bottomNav.setSelectedItemId(R.id.chatbot);
 
         //perform itemselectedlistner
         bottomNav.setOnNavigationItemSelectedListener(item -> {
@@ -35,13 +36,15 @@ public class Library extends AppCompatActivity {
                     overridePendingTransition(0,0);
                     return true;
                 case R.id.chatbot:
-                    startActivity(new Intent(getApplicationContext(), MainChatbot.class));
-                    overridePendingTransition(0,0);
                     return true;
                 case R.id.library:
+                    startActivity(new Intent(getApplicationContext(), Library.class));
+                    overridePendingTransition(0,0);
                     return true;
             }
             return false;
         });
     }
+
 }
+

@@ -109,6 +109,7 @@
         app:srcCompat="@drawable/chara"
         android:contentDescription="@string/imageview4diagnostics" />
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menu_navigation"
         android:layout_width="match_parent"

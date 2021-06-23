@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.authapptutorial.main_navigation.Account;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -55,7 +57,7 @@ import java.util.Objects;
         profileFullName = findViewById(R.id.profileFullName);
         profilePhone = findViewById(R.id.profilePhoneNo);
         profileImageView = findViewById(R.id.profileImageView);
-        saveBtn = findViewById(R.id.saveProfileInfo);
+        saveBtn = findViewById(R.id.save);
         cancelBtn = findViewById(R.id.cancelBtn);
 
          StorageReference profileRef = storageReference.child("users/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid()+"profile.jpg");

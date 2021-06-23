@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -14,16 +12,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.authapptutorial.AddTask;
+
 import com.example.authapptutorial.Login;
 import com.example.authapptutorial.R;
-import com.example.authapptutorial.ViewTaskDetails;
-import com.example.authapptutorial.calendar.Calender;
+import com.example.authapptutorial.calendar.Calendar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
-import java.util.Objects;
 
 import static android.content.ContentValues.TAG;
 
@@ -36,10 +32,10 @@ public class ListTasks extends AppCompatActivity {
     public TextView todays_date, numTasks;
     public static String size;
     public static String itemValue;
-    public static String details;
+    public static String itemValStore;
+
+    public static String details, title;
     public static int itemPosition;
-
-
 
     @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -57,11 +53,10 @@ public class ListTasks extends AppCompatActivity {
         ArrayList<String> storeTasks = new ArrayList<>();
         ArrayList<String> storeDetails = new ArrayList<>();
 
-        Calender c = new Calender();
-        c.getDate(Calender.s);
-        //   System.out.println("ssss "+ Calender.s);
+        Calendar c = new Calendar();
+        c.getDate(Calendar.s);
         todays_date = findViewById(R.id.todays_date);
-        todays_date.setText(Calender.s);
+        todays_date.setText(Calendar.s);
         // numTasks = findViewById(R.id.numTasks);
         // numTasks.setText("You have "+size+ " tasks due today");
 
@@ -69,7 +64,7 @@ public class ListTasks extends AppCompatActivity {
         Log.d(TAG, "current user: " + currentUser);
         fStore.collection("tasks")
                 .whereEqualTo("userid", currentUser)
-                .whereEqualTo("date", Calender.s)
+                .whereEqualTo("date", Calendar.s)
                 .get()
                 .addOnCompleteListener(task -> {
                     ArrayList<String> temp = new ArrayList<>();
@@ -77,31 +72,22 @@ public class ListTasks extends AppCompatActivity {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             Log.d(TAG, document.getId() + " => " + document.getData());
                              details = document.get("taskDetails").toString();
+                             System.out.println("details :"+details);
                              storeDetails.add(document.get("taskDetails").toString());
-                             storeTasks.add(document.getId());
-                             temp.add(document.getId());
-
-                           // System.out.println("ta "+ document.getId());
-                           // System.out.println("da "+ document.get("taskDetails").toString());
-
+                             title = document.get("taskName").toString();
+                             System.out.println("title :"+title);
+                             storeTasks.add(title);
+                             temp.add(title);
+                             System.out.println("id :"+document.getId());
                         }
-
                         int t = temp.size();
-                       // System.out.println("tttttttt " + t);
                         size = Integer.toString(t);
-
                     } else {
                         Log.d(TAG, "Error getting documents: ", task.getException());
                     }
 
-
                     ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeTasks);
                     listView.setAdapter(arrayAdapter);
-
-                 /*   listView.setOnItemClickListener((parent, view, position, id) ->
-                            Toast.makeText(ListTasks.this, "clicked item : " + position + " " + storeTasks.get(position), Toast.LENGTH_SHORT).show());
-
-                   });*/
 
                     listView.setOnItemClickListener((parent, v, position, id) -> {
                         itemPosition = position;
@@ -109,15 +95,15 @@ public class ListTasks extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 "Position :" + itemPosition + " ListItem : " + itemValue, Toast.LENGTH_LONG)
                                 .show();
+                        itemValStore = itemValue;
 
                         Intent i = new Intent(getApplicationContext(), ViewTaskDetails.class);
                         startActivity(i);
                                 });
                     });
 
-
                     cancelBtn.setOnClickListener(v -> {
-                        Intent i = new Intent(v.getContext(), Calender.class);
+                        Intent i = new Intent(v.getContext(), Calendar.class);
                         startActivity(i);
                     });
 
