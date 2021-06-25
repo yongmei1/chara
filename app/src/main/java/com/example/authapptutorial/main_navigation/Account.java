@@ -1,6 +1,7 @@
 package com.example.authapptutorial.main_navigation;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.authapptutorial.EditAccount;
@@ -12,7 +13,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +40,7 @@ public class Account extends  AppCompatActivity{
     FirebaseFirestore fStore;
     String userId;
     Button sendCode, changeProfileImage;
-    Button resetPassLocal;
+    Button resetPassLocal, logoutBtn;
     FirebaseUser user;
     ImageView profileImage;
     StorageReference storageReference;
@@ -78,6 +81,7 @@ public class Account extends  AppCompatActivity{
         fullName = findViewById(R.id.profileName);
         email = findViewById(R.id.profileEmail);
         resetPassLocal = findViewById(R.id.resetPassword);
+        logoutBtn = (Button) findViewById(R.id.logout);
         profileImage = findViewById(R.id.profileImage);
         changeProfileImage = findViewById(R.id.changeProfilePic);
 
@@ -107,15 +111,25 @@ public class Account extends  AppCompatActivity{
         DocumentReference documentReference = fStore.collection("users").document(userId);
         documentReference.addSnapshotListener(this, (documentSnapshot, error) -> {
 
-            assert documentSnapshot != null;    //remove this line to get error when you logout so idk rlly ?
+        //    assert documentSnapshot != null;    //remove this line to get error when you logout so idk rlly ?
+
             fullName.setText(documentSnapshot.getString("fName"));
             email.setText(documentSnapshot.getString("email"));
             phone.setText(documentSnapshot.getString("phone"));
         });
 
+        logoutBtn.setOnClickListener(v ->{
+
+            FirebaseAuth.getInstance().signOut();  //logout
+           // Intent intent = new Intent(Account.this, Login.class);
+           // startActivity(intent);
+          //  finish();  // This call is missing.
+            startActivity(new Intent(Account.this, Login.class));
+           // finish();
+        });
+
         resetPassLocal.setOnClickListener(v -> {
             final EditText resetPassword = new EditText(v.getContext());
-
             final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
             passwordResetDialog.setTitle("Reset Password");
             passwordResetDialog.setMessage("Enter New Password > 6 characters long");
@@ -125,26 +139,22 @@ public class Account extends  AppCompatActivity{
                 //extract the email and send reset link
                 String newPassword = resetPassword.getText().toString();
                 user.updatePassword(newPassword).addOnSuccessListener(aVoid -> Toast.makeText(Account.this, "Password Reset Succesfully", Toast.LENGTH_SHORT).show()).addOnFailureListener(e -> Toast.makeText(Account.this, "Password reset failed", Toast.LENGTH_SHORT).show());
-
             });
 
             passwordResetDialog.setNegativeButton("No", (dialog, which) -> {
                 //closes dialog and returns to login page
             });
-
             passwordResetDialog.create().show();
         });
 
         changeProfileImage.setOnClickListener(v -> {
             //open gallery
-
             Intent i = new Intent(v.getContext(), EditAccount.class);
             i.putExtra("fullName", fullName.getText().toString());
             i.putExtra("email", email.getText().toString());
             i.putExtra("phone", phone.getText().toString());
             startActivity(i);
         });
-
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -155,13 +165,10 @@ public class Account extends  AppCompatActivity{
                 assert data != null;
                 Uri imageUri = data.getData();
                 //profileImage.setImageURI(imageUri);
-
                 uploadImageToFirebase(imageUri);
             }
         }
     }
-
-
 
     private void uploadImageToFirebase(Uri imageUri) {
         //upload image to firebase storage
@@ -171,18 +178,4 @@ public class Account extends  AppCompatActivity{
                 fileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(profileImage))
         ).addOnFailureListener(e -> Toast.makeText(Account.this,"Image Upload Fail", Toast.LENGTH_SHORT).show());
     }
-
-    public void logout(View view){
-       /* FirebaseAuth.getInstance().signOut();  //logout
-        Intent intent = new Intent(this, Login.class);
-        startActivity(intent);  //send user to login activity class again
-        finish();*/
-
-        FirebaseAuth.getInstance().signOut();  //logout
-        finishAffinity();
-        finish();
-        startActivity(new Intent(getApplicationContext(), Login.class));  //send user to login activity class again
-
-    }
-
 }

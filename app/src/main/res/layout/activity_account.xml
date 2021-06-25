@@ -40,9 +40,9 @@
         app:layout_constraintVertical_bias="0.093" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="232dp"
-        android:layout_height="64dp"
+        android:id="@+id/logout"
+        android:layout_width="184dp"
+        android:layout_height="47dp"
         android:onClick="logout"
         android:text="@string/logout"
         android:textColor="#FFFFFF"
@@ -51,10 +51,10 @@
         app:iconTint="#FF9800"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.564"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.898" />
+        app:layout_constraintVertical_bias="0.906" />
 
     <TextView
         android:id="@+id/profileName"
@@ -94,10 +94,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.586"
+        app:layout_constraintHorizontal_bias="0.574"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.587" />
+        app:layout_constraintVertical_bias="0.547" />
 
     <TextView
         android:id="@+id/verifyMsg"
@@ -149,22 +149,22 @@
         android:text="@string/reset_password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/verifyMsg"
-        app:layout_constraintVertical_bias="0.795" />
+        app:layout_constraintVertical_bias="0.834" />
 
     <Button
         android:id="@+id/changeProfilePic"
-        android:layout_width="159dp"
-        android:layout_height="45dp"
+        android:layout_width="184dp"
+        android:layout_height="47dp"
         android:text="Edit Profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.928"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/verifyMsg"
-        app:layout_constraintVertical_bias="0.796" />
+        app:layout_constraintVertical_bias="0.763" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

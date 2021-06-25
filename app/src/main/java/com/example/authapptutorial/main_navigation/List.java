@@ -21,6 +21,7 @@ import com.example.authapptutorial.Login;
 import com.example.authapptutorial.R;
 import com.example.authapptutorial.calendar.Calendar;
 import com.example.authapptutorial.list.AddTask;
+import com.example.authapptutorial.list.ViewTaskDetails;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -44,6 +45,9 @@ public class List extends AppCompatActivity {
     FirebaseFirestore fStore;
     ListView listView;
     public static String taskName;
+    public static String itemValue;
+    public static String itemValStore;
+    public static int itemPosition;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -138,7 +142,18 @@ public class List extends AppCompatActivity {
 
                     ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeTasks);
                     listView.setAdapter(arrayAdapter);
-                    listView.setOnItemClickListener((parent, view, position, id) -> Toast.makeText(List.this,"clicked item:" + position+ " "+storeTasks.get(position),Toast.LENGTH_SHORT).show());
+                    listView.setOnItemClickListener((parent, v, position, id) -> {
+                        itemPosition = position;
+                        itemValue = (String) listView.getItemAtPosition(position);
+                        Toast.makeText(getApplicationContext(),
+                                "Position :" + itemPosition + " ListItem : " + itemValue, Toast.LENGTH_LONG)
+                                .show();
+                        itemValStore = itemValue;
+
+                        Intent i = new Intent(getApplicationContext(), ViewTaskDetails.class);
+                        startActivity(i);
+                    });
+
                 });
 
         addBtn = findViewById(R.id.addTaskBtn);

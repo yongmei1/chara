@@ -33,9 +33,9 @@ public class ListTasks extends AppCompatActivity {
     public static String size;
     public static String itemValue;
     public static String itemValStore;
+    public static int itemPosition;
 
     public static String details, title;
-    public static int itemPosition;
 
     @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.O)
