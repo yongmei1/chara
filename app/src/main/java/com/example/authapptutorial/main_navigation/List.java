@@ -37,7 +37,7 @@ import java.util.Locale;
 
 import static android.content.ContentValues.TAG;
 
-public class List extends AppCompatActivity {
+public class List<R> extends AppCompatActivity {
     ImageView calendarBtn, addBtn, taskDiagnostics;
     TextView todays_date, numTasks;
     public static String size;
