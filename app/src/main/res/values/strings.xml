@@ -38,4 +38,8 @@
     <string name="previousweek" />
     <string name="nextweek" />
     <string name="calendar">Calendar</string>
+    <string name="enter_message">Enter message</string>
+    <string name="todo">TODO</string>
+    <string name="button">Button</string>
+    <string name="chatbot_main_page">Chatbot Main Page</string>
 </resources>
