@@ -5,39 +5,29 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.authapptutorial.Login;
 import com.example.authapptutorial.R;
 import com.example.authapptutorial.calendar.Calendar;
 import com.example.authapptutorial.list.AddTask;
 import com.example.authapptutorial.list.ViewTaskDetails;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
-
 import static android.content.ContentValues.TAG;
 
-public class List<R> extends AppCompatActivity {
+public class List extends AppCompatActivity {
     ImageView calendarBtn, addBtn, taskDiagnostics;
     TextView todays_date, numTasks;
     public static String size;
@@ -58,7 +48,7 @@ public class List<R> extends AppCompatActivity {
         setContentView(R.layout.activity_list);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        listView= (ListView)findViewById(R.id.listview);
+        listView= findViewById(R.id.listview);
         ArrayList<String> storeTasks = new ArrayList<>();
 
 

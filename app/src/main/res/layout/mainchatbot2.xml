@@ -4,24 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#03A9F4"
-    tools:context=".main_navigation.MainChatbot">
+    android:background="#2196F3">
 
-    <!--recycler view to display our chats-->
-
-    <RelativeLayout
-        android:id="@+id/tasksLayout"
-        android:layout_width="414dp"
-        android:layout_height="450dp"
-        android:layout_marginBottom="32dp"
+    <ImageButton
+        android:id="@+id/cancelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.927">
-
-    </RelativeLayout>
+        app:layout_constraintVertical_bias="0.007"
+        app:srcCompat="@drawable/ic_cancel"
+        android:contentDescription="@string/todo" />
 
     <EditText
         android:id="@+id/userMessage"
@@ -29,29 +25,15 @@
         android:layout_height="43dp"
         android:background="#FFFFFF"
         android:ems="10"
-        android:hint="      Enter message"
+        android:hint="@string/enter_message"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.901" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/menu_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#3F51B5"
-        app:itemIconTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:menu="@menu/menu_navigation"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.901"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/button"
@@ -68,12 +50,4 @@
         app:layout_constraintVertical_bias="0.907"
         app:tint="@color/white"
         tools:ignore="MissingConstraints" />
-
-    <ListView
-        android:id="@+id/listview"
-        android:layout_width="442dp"
-        android:layout_height="619dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
