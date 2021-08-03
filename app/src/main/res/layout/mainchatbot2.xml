@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2196F3">
@@ -19,35 +19,43 @@
         app:srcCompat="@drawable/ic_cancel"
         android:contentDescription="@string/todo" />
 
-    <EditText
-        android:id="@+id/userMessage"
-        android:layout_width="349dp"
-        android:layout_height="43dp"
-        android:background="#FFFFFF"
-        android:ems="10"
-        android:hint="@string/enter_message"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvChatList"
+        android:layout_width="399dp"
+        android:layout_height="554dp"
+        app:layout_constraintBottom_toTopOf="@+id/etChat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.901"
+        app:layout_constraintVertical_bias="0.598" />
+
+    <EditText
+        android:id="@+id/etChat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:hint="@string/chat_with_bot"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnSend"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.963"
         android:autofillHints="" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="55dp"
-        android:layout_height="57dp"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="1"
-        app:icon="@drawable/ic_send"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/btnSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/send"
+        app:layout_constraintBottom_toBottomOf="@+id/etChat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.958"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.907"
-        app:tint="@color/white"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="@+id/etChat"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
