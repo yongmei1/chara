@@ -63,16 +63,19 @@ public class List extends AppCompatActivity {
                 case R.id.account:
                     startActivity(new Intent(getApplicationContext(), Account.class));
                     overridePendingTransition(0,0);
+                    finish();
                     return true;
                 case R.id.list:
                     return true;
                 case R.id.chatbot:
                     startActivity(new Intent(getApplicationContext(), MainChatbot.class));
                     overridePendingTransition(0,0);
+                    finish();
                     return true;
                 case R.id.library:
                     startActivity(new Intent(getApplicationContext(), Library.class));
                     overridePendingTransition(0,0);
+                    finish();
                     return true;
             }
             return false;

@@ -38,23 +38,30 @@ public class MainChatbot extends AppCompatActivity {
                 case R.id.account:
                     startActivity(new Intent(getApplicationContext(), Account.class));
                     overridePendingTransition(0, 0);
+                    finish();
                     return true;
                 case R.id.list:
                     startActivity(new Intent(getApplicationContext(), List.class));
                     overridePendingTransition(0, 0);
+                    finish();
                     return true;
                 case R.id.chatbot:
                     return true;
                 case R.id.library:
                     startActivity(new Intent(getApplicationContext(), Library.class));
                     overridePendingTransition(0, 0);
+                    finish();
                     return true;
             }
             return false;
         });
 
 
-    button.setOnClickListener(v -> startActivity(new Intent(this, MainChatbot2.class)));
+    button.setOnClickListener(v -> {
+        startActivity(new Intent(this, MainChatbot2.class));
+        finish();
+    });
+   // finish();
 
 }
 }

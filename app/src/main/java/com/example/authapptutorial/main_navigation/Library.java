@@ -4,44 +4,37 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.authapptutorial.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+
+import org.jetbrains.annotations.NotNull;
 
 public class Library extends AppCompatActivity {
-
 
     @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.library);
+        setContentView(R.layout.library2);
 
-        //initialise and assign variable
-        BottomNavigationView bottomNav = findViewById(R.id.menu_navigation);
-        //set chatbot main selected
-        bottomNav.setSelectedItemId(R.id.library);
+        YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_player_view);
+        getLifecycle().addObserver(youTubePlayerView);
 
-        //perform itemselectedlistner
-        bottomNav.setOnNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()){
-                case R.id.account:
-                    startActivity(new Intent(getApplicationContext(), Account.class));
-                    overridePendingTransition(0,0);
-                    return true;
-                case R.id.list:
-                    startActivity(new Intent(getApplicationContext(), List.class));
-                    overridePendingTransition(0,0);
-                    return true;
-                case R.id.chatbot:
-                    startActivity(new Intent(getApplicationContext(), MainChatbot.class));
-                    overridePendingTransition(0,0);
-                    return true;
-                case R.id.library:
-                    return true;
+        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                String videoId = "gXWXKjR-qII";
+                youTubePlayer.loadVideo(videoId, 0);
             }
-            return false;
         });
+
     }
+
+
 }

@@ -64,14 +64,17 @@ public class Account extends  AppCompatActivity{
                 case R.id.list:
                     startActivity(new Intent(getApplicationContext(), List.class));
                     overridePendingTransition(0,0);
+                    finish();
                     return true;
                 case R.id.chatbot:
                     startActivity(new Intent(getApplicationContext(), MainChatbot.class));
                     overridePendingTransition(0,0);
+                    finish();
                     return true;
                 case R.id.library:
                     startActivity(new Intent(getApplicationContext(), Library.class));
                     overridePendingTransition(0,0);
+                    finish();
                     return true;
             }
             return false;
@@ -111,7 +114,7 @@ public class Account extends  AppCompatActivity{
         DocumentReference documentReference = fStore.collection("users").document(userId);
         documentReference.addSnapshotListener(this, (documentSnapshot, error) -> {
 
-        //    assert documentSnapshot != null;    //remove this line to get error when you logout so idk rlly ?
+            assert documentSnapshot != null;    //remove this line to get error when you logout so idk rlly ?
 
             fullName.setText(documentSnapshot.getString("fName"));
             email.setText(documentSnapshot.getString("email"));
@@ -125,7 +128,7 @@ public class Account extends  AppCompatActivity{
            // startActivity(intent);
           //  finish();  // This call is missing.
             startActivity(new Intent(Account.this, Login.class));
-           // finish();
+            finish();
         });
 
         resetPassLocal.setOnClickListener(v -> {

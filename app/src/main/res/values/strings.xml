@@ -11,7 +11,6 @@
     <string name="phone_number">Phone Number</string>
     <string name="your_email_address">Your Email Address</string>
     <string name="your_name">Your Name</string>
-    <string name="logout">Logout</string>
     <string name="library">Library</string>
     <string name="library_page">Library Page</string>
     <string name="nextmonth">nextmonth</string>
@@ -42,5 +41,29 @@
     <string name="chatbot_main_page">Chatbot Main Page</string>
     <string name="send">Send</string>
     <string name="chat_with_bot">Chat with bot</string>
+    <string name="yoga">yoga</string>
+    <string name="task_type">Task type</string>
+    <string name="edit">Edit</string>
+    <string name="task_title">Task title</string>
+    <string name="task_details">Task details</string>
+    <string name="delete">Delete</string>
+    <string name="add_a_task">Add a Task</string>
+    <string name="cancel">Cancel</string>
+    <string name="add_task_details">Add task details</string>
+    <string name="set_due_time">Set due time</string>
+    <string name="personal">Personal</string>
+    <string name="jan_01_2021">Jan 01 2021</string>
+    <string name="other">Other</string>
+    <string name="set_task_reminder">Set task reminder</string>
+    <string name="work">Work</string>
+    <string name="add_task_title">Add task title</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="email_address">Email Address</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone">Phone</string>
+    <string name="save">Save</string>
     <string name="todo">TODO</string>
+    <string name="click_to_chat">Click to Chat</string>
+    <string name="logout">Logout</string>
+    <string name="edit_profile">Edit Profile</string>
 </resources>

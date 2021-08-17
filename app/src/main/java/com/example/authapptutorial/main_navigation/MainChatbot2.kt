@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainChatbot2 : AppCompatActivity() {
     private val adapterChatBot = AdapterChatBot()
-    lateinit var sendbutton: Button
+    lateinit var sendbutton: ImageView
     lateinit var etChat: EditText
     lateinit var cancelBtn: ImageView
     lateinit var rvChatList: RecyclerView
@@ -31,7 +31,7 @@ class MainChatbot2 : AppCompatActivity() {
         setContentView(R.layout.mainchatbot2)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.1.11:5000/")
+            .baseUrl("http://192.168.1.21:5000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -59,6 +59,7 @@ class MainChatbot2 : AppCompatActivity() {
         cancelBtn.setOnClickListener { v: View ->
             val i = Intent(v.context, MainChatbot::class.java)
             startActivity(i)
+            finish()
         }
 
     }

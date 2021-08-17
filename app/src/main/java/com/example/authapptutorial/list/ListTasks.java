@@ -47,7 +47,7 @@ public class ListTasks extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         listView = (ListView) findViewById(R.id.listview);
         addBtn = findViewById(R.id.addTaskBtn);
-        taskDiagnostics = findViewById(R.id.taskDiagnostics);
+     //   taskDiagnostics = findViewById(R.id.taskDiagnostics);
       //  deleteBtn = findViewById(R.id.deleteTaskBtn);
         cancelBtn = findViewById(R.id.cancelBtn);
         ArrayList<String> storeTasks = new ArrayList<>();
@@ -99,17 +99,20 @@ public class ListTasks extends AppCompatActivity {
 
                         Intent i = new Intent(getApplicationContext(), ViewTaskDetails.class);
                         startActivity(i);
+                        finish();
                                 });
                     });
 
                     cancelBtn.setOnClickListener(v -> {
                         Intent i = new Intent(v.getContext(), Calendar.class);
                         startActivity(i);
+                        finish();
                     });
 
                     addBtn.setOnClickListener(v -> {
                         Intent i = new Intent(v.getContext(), AddTask.class);
                         startActivity(i);
+                        finish();
                     });
 
                     FirebaseAuth fAuth;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2196F3">
+    android:background="#00BCD4">
 
 
     <RelativeLayout
@@ -28,31 +28,31 @@
 
     <ImageButton
         android:id="@+id/calendarBtn"
-        android:layout_width="58dp"
-        android:layout_height="46dp"
-        android:background="#2196F3"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:background="#00BCD4"
         android:contentDescription="@string/imageview4cal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.661"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224"
-        app:srcCompat="@drawable/ic_calendar" />
+        app:layout_constraintVertical_bias="0.223"
+        app:srcCompat="@drawable/calender_icon" />
 
     <ImageButton
         android:id="@+id/addTaskBtn"
-        android:layout_width="58dp"
-        android:layout_height="46dp"
-        android:background="#2196F3"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:background="#00BCD4"
+        android:contentDescription="@string/imageview4task"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintHorizontal_bias="0.314"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224"
-        app:srcCompat="@drawable/ic_add"
-        android:contentDescription="@string/imageview4task" />
+        app:layout_constraintVertical_bias="0.223"
+        app:srcCompat="@drawable/add_icon" />
 
     <TextView
         android:id="@+id/todays_date"
@@ -81,19 +81,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.153" />     -->
-
-    <ImageView
-        android:id="@+id/taskDiagnostics"
-        android:layout_width="89dp"
-        android:layout_height="71dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.219"
-        app:srcCompat="@drawable/chara"
-        android:contentDescription="@string/imageview4diagnostics" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

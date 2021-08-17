@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -44,7 +45,7 @@ public class EditTask extends AppCompatActivity {
     taskModel task;
     EditText title, details;
     Button save;
-    ImageButton cancel;
+    ImageView cancel;
     CheckBox work, personal,other;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -77,6 +78,7 @@ public class EditTask extends AppCompatActivity {
         cancel.setOnClickListener(v-> {
             Intent i = new Intent(v.getContext(), ListTasks.class);
             startActivity(i);
+            finish();
         });
 
 
@@ -202,18 +204,8 @@ public class EditTask extends AppCompatActivity {
                                     taskModel task1 = new taskModel(taskDetails,taskTitle, userID, date, taskType);
                                     fStore.collection("tasks").document(taskID)
                                             .set(task1)
-                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void aVoid) {
-                                                    Log.d((String) TAG, "DocumentSnapshot successfully written!");
-                                                }
-                                            })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    Log.w((String) TAG, "Error writing document", e);
-                                                }
-                                            });
+                                            .addOnSuccessListener(aVoid -> Log.d((String) TAG, "DocumentSnapshot successfully written!"))
+                                            .addOnFailureListener(e -> Log.w((String) TAG, "Error writing document", e));
                                 }
                             } else {
                                 Log.d((String) TAG, "Error getting documents: ", task.getException());

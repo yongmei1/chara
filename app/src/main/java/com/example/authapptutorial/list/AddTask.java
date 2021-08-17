@@ -71,6 +71,7 @@ public class AddTask extends AppCompatActivity {
         cancel.setOnClickListener(v-> {
             Intent i = new Intent(v.getContext(), List.class);
             startActivity(i);
+            finish();
         });
 
 
@@ -127,6 +128,7 @@ public class AddTask extends AppCompatActivity {
             String date = datePickerBtn.getText().toString();
 
             startActivity(new Intent(getApplicationContext(), List.class));
+            finish();
             Toast.makeText(this,"Task successfully added", Toast.LENGTH_LONG).show();
             userID = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
          //   documentReference = fStore.collection("tasks").document(taskTitle);
