@@ -93,7 +93,7 @@ class MainChatbot2 : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
-                adapterChatBot.addChatToList(ChatModel(etChat.text.toString()))
+                adapterChatBot.addChatToList(ChatModel("User: "+etChat.text.toString()))
                 apiService.chatWithTheBit(etChat.text.toString()).enqueue(callBack)
                 etChat.text.clear()
             }
@@ -103,7 +103,7 @@ class MainChatbot2 : AppCompatActivity() {
     private val callBack = object  : Callback<ChatResponse>{
         override fun onResponse(call: Call<ChatResponse>, response: Response<ChatResponse>) {
             if(response.isSuccessful &&  response.body()!= null){
-                adapterChatBot.addChatToList(ChatModel(response.body()!!.chatBotReply))
+                adapterChatBot.addChatToList(ChatModel("Chara: "+response.body()!!.chatBotReply))
             }else{
                 Toast.makeText(this@MainChatbot2, "Something went wrong", Toast.LENGTH_LONG).show()
             }

@@ -140,8 +140,7 @@ public class Calendar extends AppCompatActivity implements CalendarAdaptor.OnIte
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
             s = dayText +" "+ monthYearFromDate(selectedDate);
 
-            // this works get rid of adfa shit ...
-            System.out.println( "adfa "+ s);
+            // this works get rid of adfa  ... System.out.println( "adfa "+ s);
             getDate(s);
             startActivity(new Intent(getApplicationContext(), ListTasks.class));
         }
