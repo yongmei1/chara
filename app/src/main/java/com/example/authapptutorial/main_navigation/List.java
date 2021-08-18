@@ -68,7 +68,7 @@ public class List extends AppCompatActivity {
                 case R.id.list:
                     return true;
                 case R.id.chatbot:
-                    startActivity(new Intent(getApplicationContext(), MainChatbot.class));
+                    startActivity(new Intent(getApplicationContext(), MainChatbot2.class));
                     overridePendingTransition(0,0);
                     finish();
                     return true;

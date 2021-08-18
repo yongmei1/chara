@@ -14,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Authapptutorial"
         tools:targetApi="m">
-        <activity android:name=".main_navigation.MainChatbot" />
         <activity android:name=".main_navigation.MainChatbot2" />
         <activity android:name=".main_navigation.Library" />
         <activity android:name=".main_navigation.List" />

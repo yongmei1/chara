@@ -49,10 +49,10 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.906"
+        app:layout_constraintVertical_bias="0.893"
         tools:ignore="OnClick" />
 
     <TextView
@@ -72,7 +72,7 @@
 
     <TextView
         android:id="@+id/profileEmail"
-        android:layout_width="363dp"
+        android:layout_width="364dp"
         android:layout_height="48dp"
         android:background="#00BCD4"
         android:text="@string/your_email_address"
@@ -98,32 +98,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.547" />
 
-    <TextView
-        android:id="@+id/verifyMsg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/email_not_verified"
-        android:textColor="#B02727"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.033"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.034" />
-
     <Button
         android:id="@+id/resendCode"
         android:layout_width="161dp"
         android:layout_height="40dp"
-        android:text="@string/verify_now"
+        android:text="@string/verify_email_now"
         android:textColor="#FFFFFF"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.936"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.034" />
@@ -145,25 +128,23 @@
         android:id="@+id/resetPassword"
         android:layout_width="184dp"
         android:layout_height="47dp"
+        android:layout_marginBottom="128dp"
         android:text="@string/reset_password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/verifyMsg"
-        app:layout_constraintVertical_bias="0.834" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/changeProfilePic"
         android:layout_width="184dp"
         android:layout_height="47dp"
+        android:layout_marginBottom="180dp"
         android:text="@string/edit_profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/verifyMsg"
-        app:layout_constraintVertical_bias="0.763" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

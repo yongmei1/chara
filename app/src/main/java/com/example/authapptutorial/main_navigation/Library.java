@@ -3,17 +3,10 @@ package com.example.authapptutorial.main_navigation;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.authapptutorial.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
-
-import org.jetbrains.annotations.NotNull;
 
 public class Library extends AppCompatActivity {
 
@@ -21,19 +14,36 @@ public class Library extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.library2);
+        setContentView(R.layout.library);
 
-        YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_player_view);
-        getLifecycle().addObserver(youTubePlayerView);
+        //initialise and assign variable
+        BottomNavigationView bottomNav = findViewById(R.id.menu_navigation);
+        //set chatbot main selected
+        bottomNav.setSelectedItemId(R.id.library);
 
-        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
-            @Override
-            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-                String videoId = "gXWXKjR-qII";
-                youTubePlayer.loadVideo(videoId, 0);
+        //perform itemselectedlistner
+        bottomNav.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.account:
+                    startActivity(new Intent(getApplicationContext(), Account.class));
+                    overridePendingTransition(0,0);
+                    finish();
+                    return true;
+                case R.id.list:
+                    startActivity(new Intent(getApplicationContext(), List.class));
+                    overridePendingTransition(0,0);
+                    finish();
+                    return true;
+                case R.id.chatbot:
+                    startActivity(new Intent(getApplicationContext(), MainChatbot2.class));
+                    overridePendingTransition(0,0);
+                    finish();
+                    return true;
+                case R.id.library:
+                    return true;
             }
+            return false;
         });
-
     }
 
 

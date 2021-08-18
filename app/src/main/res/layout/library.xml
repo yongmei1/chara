@@ -24,14 +24,85 @@
                 android:layout_width="410dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:contentDescription="@string/yoga"
+                android:contentDescription="@string/meditation"
+                app:videoId="ZToicYcHIOU"
+                android:id="@+id/player1"
                 app:autoPlay="true"
-                app:showYouTubeButton="false"
-                app:videoId="M-8FvC3GD8c"
-                app:showFullScreenButton="false"
-                android:id="@+id/player1"/>
+                app:showFullScreenButton="true"
+                app:showSeekBar="true"
+                app:showVideoDuration="true"
+                app:showVideoCurrentTime="true"
+                app:showYouTubeButton="false"/>
 
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="410dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/nature_sounds"
+                app:videoId="cwSHzxaYL6Q"
+                android:id="@+id/player2"
+                app:autoPlay="true"
+                app:showFullScreenButton="true"
+                app:showSeekBar="true"
+                app:showVideoDuration="true"
+                app:showVideoCurrentTime="true"
+                app:showYouTubeButton="false"/>
 
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="410dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/home_desk_setup"
+                app:videoId="F8_ME4VwTiw"
+                android:id="@+id/player3"
+                app:autoPlay="true"
+                app:showFullScreenButton="true"
+                app:showSeekBar="true"
+                app:showVideoDuration="true"
+                app:showVideoCurrentTime="true"
+                app:showYouTubeButton="false"/>
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="410dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/workout_no_equipment"
+                app:videoId="Og_f0_qO_Ko"
+                android:id="@+id/player4"
+                app:autoPlay="true"
+                app:showFullScreenButton="true"
+                app:showSeekBar="true"
+                app:showVideoDuration="true"
+                app:showVideoCurrentTime="true"
+                app:showYouTubeButton="false"/>
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="410dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/manage_time"
+                app:videoId="iDbdXTMnOme"
+                android:id="@+id/player5"
+                app:autoPlay="true"
+                app:showFullScreenButton="true"
+                app:showSeekBar="true"
+                app:showVideoDuration="true"
+                app:showVideoCurrentTime="true"
+                app:showYouTubeButton="false"/>
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="410dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/yoga"
+                app:videoId="gXWXKjR-qII"
+                android:id="@+id/player6"
+                app:autoPlay="true"
+                app:showFullScreenButton="true"
+                app:showSeekBar="true"
+                app:showVideoDuration="true"
+                app:showVideoCurrentTime="true"
+                app:showYouTubeButton="false"/>
 
 
         </LinearLayout>

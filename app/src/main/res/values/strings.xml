@@ -66,4 +66,10 @@
     <string name="click_to_chat">Click to Chat</string>
     <string name="logout">Logout</string>
     <string name="edit_profile">Edit Profile</string>
+    <string name="meditation" />
+    <string name="nature_sounds" />
+    <string name="home_desk_setup" />
+    <string name="workout_no_equipment" />
+    <string name="manage_time" />
+    <string name="verify_email_now" >Verify email now</string>
 </resources>

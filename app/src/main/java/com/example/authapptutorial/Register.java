@@ -13,7 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.authapptutorial.main_navigation.MainChatbot;
+import com.example.authapptutorial.main_navigation.MainChatbot2;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -51,7 +51,7 @@ public class Register extends AppCompatActivity {
 
 
         if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplication(), MainChatbot.class));
+            startActivity(new Intent(getApplication(), MainChatbot2.class));
             finish();
         }
 
@@ -96,7 +96,7 @@ public class Register extends AppCompatActivity {
                     user.put("phone", phone);
                     documentReference.set(user).addOnSuccessListener(aVoid -> Log.d(TAG, "onSuccess: user profile is created for "+ userID)).addOnFailureListener(e -> Log.d(TAG,"onFailure: "+e.toString()));
 
-                    startActivity(new Intent(getApplicationContext(), MainChatbot.class));
+                    startActivity(new Intent(getApplicationContext(), MainChatbot2.class));
                 }
                 else{
                     Toast.makeText(Register.this, "Error!"+ task.getException().getMessage(), Toast.LENGTH_SHORT).show();

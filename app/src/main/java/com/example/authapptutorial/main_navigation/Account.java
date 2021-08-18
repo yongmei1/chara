@@ -1,9 +1,7 @@
 package com.example.authapptutorial.main_navigation;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.authapptutorial.EditAccount;
 import com.example.authapptutorial.Login;
 import com.example.authapptutorial.R;
@@ -13,9 +11,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,12 +26,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
-
 import java.util.Objects;
 
 
 public class Account extends  AppCompatActivity{
-    TextView fullName, email,phone, verifySMS;
+    TextView fullName, email,phone;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userId;
@@ -67,7 +62,7 @@ public class Account extends  AppCompatActivity{
                     finish();
                     return true;
                 case R.id.chatbot:
-                    startActivity(new Intent(getApplicationContext(), MainChatbot.class));
+                    startActivity(new Intent(getApplicationContext(), MainChatbot2.class));
                     overridePendingTransition(0,0);
                     finish();
                     return true;
@@ -90,7 +85,6 @@ public class Account extends  AppCompatActivity{
 
 
         sendCode = findViewById(R.id.resendCode);
-        verifySMS = findViewById(R.id.verifyMsg);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -105,7 +99,6 @@ public class Account extends  AppCompatActivity{
         user = fAuth.getCurrentUser();
 
         if (!user.isEmailVerified()) {
-            verifySMS.setVisibility(View.VISIBLE);
             sendCode.setVisibility(View.VISIBLE);
 
             sendCode.setOnClickListener(v -> user.sendEmailVerification().addOnSuccessListener(aVoid -> Toast.makeText(v.getContext(), "Verification Email Has Been Sent", Toast.LENGTH_SHORT).show()).addOnFailureListener(e -> Log.d("tag", "onFailure: Email not sent " + e.getMessage())));

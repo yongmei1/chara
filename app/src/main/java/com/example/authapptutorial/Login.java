@@ -13,7 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.authapptutorial.main_navigation.MainChatbot;
+import com.example.authapptutorial.main_navigation.MainChatbot2;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
@@ -64,7 +64,7 @@ public class Login extends AppCompatActivity {
             fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
                 if(task.isSuccessful()){
                     Toast.makeText(Login.this, "Login successful",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), MainChatbot.class));
+                    startActivity(new Intent(getApplicationContext(), MainChatbot2.class));
                 }
                 else{
                     Toast.makeText(Login.this, "Error!"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();

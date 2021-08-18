@@ -3,15 +3,16 @@ package com.example.authapptutorial.main_navigation
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
-import com.example.authapptutorial.R
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.authapptutorial.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,8 +29,51 @@ class MainChatbot2 : AppCompatActivity() {
     @SuppressLint("NonConstantResourceId", "WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.mainchatbot2)
+        setContentView(R.layout.chatbotexample)
 
+        //initialise and assign variable
+        val bottomNav = findViewById<BottomNavigationView>(R.id.menu_navigation)
+        //set chatbot main selected
+        //set chatbot main selected
+        bottomNav.selectedItemId = R.id.chatbot
+
+        //perform itemselectedlistner
+
+        //perform itemselectedlistner
+        bottomNav.setOnNavigationItemSelectedListener { item: MenuItem ->
+            when (item.itemId) {
+                R.id.account -> {
+                    startActivity(
+                        Intent(
+                            applicationContext,
+                            Account::class.java
+                        )
+                    )
+                    overridePendingTransition(0, 0)
+                    finish()
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.list -> {
+                    startActivity(
+                        Intent(
+                            applicationContext,
+                            List::class.java
+                        )
+                    )
+                    overridePendingTransition(0, 0)
+                    finish()
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.chatbot -> return@setOnNavigationItemSelectedListener true
+                R.id.library -> {
+                    startActivity(Intent(applicationContext, Library::class.java))
+                    overridePendingTransition(0, 0)
+                    finish()
+                    return@setOnNavigationItemSelectedListener true
+                }
+            }
+            false
+        }
         val retrofit = Retrofit.Builder()
             .baseUrl("http://192.168.1.21:5000/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -53,14 +97,6 @@ class MainChatbot2 : AppCompatActivity() {
                 apiService.chatWithTheBit(etChat.text.toString()).enqueue(callBack)
                 etChat.text.clear()
             }
-
-        cancelBtn = findViewById(R.id.cancelBtn)
-
-        cancelBtn.setOnClickListener { v: View ->
-            val i = Intent(v.context, MainChatbot::class.java)
-            startActivity(i)
-            finish()
-        }
 
     }
 
